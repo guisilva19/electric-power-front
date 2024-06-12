@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
+import WhatsApp from "@/components/WhatsApp/WhatsApp";
+import Footer from "@/components/Footer/Footer";
+import { NextUIProvider } from "@nextui-org/react";
 
 const sora = Sora({ subsets: ["latin"] });
 
@@ -18,8 +21,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={sora.className}>
-        <Header />
-        {children}
+        <NextUIProvider>
+          <Header />
+          {children}
+          <WhatsApp />
+          <Footer />
+        </NextUIProvider>
       </body>
     </html>
   );
