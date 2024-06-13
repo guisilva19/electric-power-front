@@ -1,7 +1,11 @@
+import Panel from "@/components/Panel/Panel";
+
 export default function Home() {
   return (
     <>
-      <main className="bg-yellow"></main>
+      <main className="">
+        <Panel />
+      </main>
     </>
   );
 }
