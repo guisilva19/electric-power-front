@@ -41,17 +41,20 @@ function ComponentQuestion({
       <div className="w-full flex flex-col">
         <div
           onClick={() => setIsView(!isView)}
-          className={`flex justify-between items-center px-5 py-4 text-white font-medium text-sm md:text-base  ${
+          className={`flex justify-between items-center px-5 py-4 text-white font-medium text-xs sm:text-sm md:text-base gap-2  ${
             isView ? "bg-green-water" : "bg-gray"
           }`}
         >
-          <h1>{title}</h1>
-          <IoIosArrowForward
-            className={`${isView ? "rotate-90" : "rotate-0"}`}
-          />
+          <h1 className="w-11/12">{title}</h1>
+          <div className="w-[20px]">
+            <IoIosArrowForward
+              size={20}
+              className={`${isView ? "rotate-90" : "rotate-0"}`}
+            />
+          </div>
         </div>
         {isView && (
-          <p className="bg-[#EBE9E9] px-5 font-normal text-sm md:text-base py-3">
+          <p className="bg-[#EBE9E9] px-5 font-normal text-xs sm:text-sm md:text-base py-3">
             {description}
           </p>
         )}
