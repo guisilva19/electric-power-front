@@ -10,6 +10,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        lx: "1110px",
+        mdx: "900px",
+        xs: "500px",
+        xxs: "420px",
+      },
       colors: {
         green: {
           water: "#38ADB6",
