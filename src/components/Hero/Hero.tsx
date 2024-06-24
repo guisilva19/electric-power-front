@@ -16,7 +16,7 @@ export default function Hero() {
     <>
       <main className="w-screen relative">
         <figure className="w-screen">
-          <div className="flex mdx:hidden w-screen bg-gradient-to-b from-[#2a1b3344] to-[#2A1B33] top-0 h-full z-20 absolute" />
+          <div className="flex mdx:hidden w-screen bg-gradient-to-b from-[#2a1b3354] to-[#2A1B33] top-0 h-full z-20 absolute" />
           <div className="hidden mdx:flex w-screen bg-gradient-to-b from-transparent to-[#2A1B33] top-0 h-full z-20 absolute" />
           <Image
             src={Background}
@@ -25,15 +25,15 @@ export default function Hero() {
           />
         </figure>
 
-        <div className="w-screen h-full flex flex-col mdx:flex-row justify-center items-center gap-20 mdx:gap-8 lg:gap-14 xl:gap-40 absolute top-0 z-50">
-          <section className="flex flex-col text-white gap-4 xs:gap-6 lg:gap-10 w-10/12 xs:w-[450px] mdx:w-[510px] lx:w-[570px]">
-            <h3 className="text-2xl xs:text-3xl lg:text-4xl lx:text-5xl font-bold">
+        <div className="w-screen h-full flex flex-col mdx:flex-row justify-center items-center gap-10 md:gap-20 mdx:gap-8 lg:gap-14 xl:gap-40 absolute top-0 z-50">
+          <section className="flex flex-col text-white gap-4 xs:gap-6 lg:gap-10 w-[95%] xs:w-[450px] mdx:w-[510px] lx:w-[570px]">
+            <h3 className="text-3xl lg:text-4xl lx:text-5xl font-bold">
               Deixe que o sol pague <br />a sua conta de energia!
             </h3>
             <ul className="flex flex-col gap-2 xs:gap-5">
               <li className="w-full flex items-center gap-3">
-                <div className="w-3 h-3 bg-green-water" />
-                <p className="text-sm lg:text-base lx:text-lg font-light mdx:font-extralight">
+                <div className="w-3 h-3 bg-green-water rounded-sm" />
+                <p className="text-[13px] lg:text-base lx:text-lg font-light mdx:font-extralight">
                   Descubra o poder da{" "}
                   <strong className="font-bold">energia solar</strong> para
                   reduzir seus <br />
@@ -41,8 +41,8 @@ export default function Hero() {
                 </p>
               </li>
               <li className="w-full flex items-center gap-3">
-                <div className="w-3 h-3 bg-green-water" />
-                <p className="text-sm lg:text-base lx:text-lg font-light mdx:font-extralight">
+                <div className="w-3 h-3 bg-green-water rounded-sm" />
+                <p className="text-[13px] lg:text-base lx:text-lg font-light mdx:font-extralight">
                   Com nossos{" "}
                   <strong className="font-bold">sistemas inovadores</strong>,
                   você pode gerar <br />
@@ -54,8 +54,8 @@ export default function Hero() {
                 </p>
               </li>
               <li className="w-full flex items-center gap-3">
-                <div className="w-3 h-3 bg-green-water" />
-                <p className="text-sm lg:text-base lx:text-lg font-light mdx:font-extralight">
+                <div className="w-3 h-3 bg-green-water rounded-sm" />
+                <p className="text-[13px] lg:text-base lx:text-lg font-light mdx:font-extralight">
                   Dê um passo em direção a um{" "}
                   <strong className="font-bold">futuro mais sustentável</strong>
                   <br /> e <strong className="font-bold">econômico</strong> hoje
@@ -65,7 +65,7 @@ export default function Hero() {
             </ul>
           </section>
 
-          <section className="w-[350px] xxs:w-[400px] lg:w-[440px] h-[600px] lg:h-[670px] bg-white rounded-md flex flex-col items-center py-10 gap-5">
+          <section className="w-11/12 xxs:w-[400px] lg:w-[440px] h-[600px] lg:h-[670px] bg-white rounded-md flex flex-col items-center py-10 gap-5">
             <h3 className="text-green-water font-bold text-xl">
               Solicitar orçamento
             </h3>
