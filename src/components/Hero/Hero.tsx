@@ -11,6 +11,44 @@ import { citys } from "./data";
 
 export default function Hero() {
   const [locale, setLocale] = useState<string>("");
+  const [value, setValue] = useState<string>("R$ 0,00");
+
+  const formatToBRL = (valueInput: any) => {
+    const formattedValue = valueInput.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    console.log(formattedValue);
+    setValue(formattedValue);
+  };
+
+  const formatCurrency = (text: string) => {
+    let cleaned = text.replace(/\D/g, "");
+
+    // Adiciona zeros à esquerda se houver menos de 3 dígitos
+    // Isso garante que os centavos sejam tratados corretamente
+    while (cleaned.length < 3) {
+      cleaned = "0" + cleaned;
+    }
+
+    let integerPart = cleaned.slice(0, -2);
+    let decimalPart = cleaned.slice(-2);
+
+    integerPart = parseInt(integerPart).toLocaleString("pt-BR");
+
+    let formatted = integerPart + "," + decimalPart;
+
+    if (formatted !== "0,00") {
+      formatted = "R$ " + formatted;
+    }
+
+    return formatted;
+  };
+
+  const handleValueChange = (text: string) => {
+    const numericText = text.replace(/\s?R\$\s?/, "");
+    setValue(formatCurrency(numericText));
+  };
 
   return (
     <>
@@ -21,7 +59,7 @@ export default function Hero() {
           <Image
             src={Background}
             alt="Background"
-            className="w-screen h-[1100px] mdx:h-[900px] object-cover object-center z-50"
+            className="w-screen h-[1150px] mdx:h-[900px] object-cover object-center z-50"
           />
         </figure>
 
@@ -65,11 +103,11 @@ export default function Hero() {
             </ul>
           </section>
 
-          <section className="w-11/12 xxs:w-[400px] lg:w-[440px] h-[600px] lg:h-[670px] bg-white rounded-md flex flex-col items-center py-10 gap-5">
+          <section className="w-11/12 xxs:w-[400px] lg:w-[440px] h-[700px] bg-white rounded-md flex flex-col items-center py-8 gap-5">
             <h3 className="text-green-water font-bold text-xl">
               Solicitar orçamento
             </h3>
-            <form className="w-11/12 lg:w-[85%] flex flex-col gap-3">
+            <form className="w-11/12 lg:w-[85%] flex flex-col gap-5">
               <fieldset className="flex flex-col gap-2">
                 <label className="flex gap-1 font-bold text-sm lg:text-base">
                   Quero economizar para:
@@ -113,7 +151,6 @@ export default function Hero() {
                 <fieldset className="w-6/12">
                   <label className="flex gap-1 font-bold text-sm lg:text-base">
                     Cidade:
-                    <mark className="text-green-water bg-transparent">*</mark>
                   </label>
                   <Select
                     className="h-9 lg:h-8"
@@ -161,6 +198,29 @@ export default function Hero() {
                 </label>
                 <Input variant="underlined" size="sm" className="h-4" />
               </fieldset>
+
+              <fieldset className="flex flex-col gap-2 mt-3">
+                <label className="flex gap-1 font-bold text-sm lg:text-base">
+                  Qual o valor da sua conta de luz por mês?
+                </label>
+                <input
+                  type=""
+                  className="w-full h-12 bg-gray/20 outline-none flex text-center font-bold rounded-sm"
+                  value={value}
+                  onChange={(e) => handleValueChange(e.target.value)}
+                />
+                <span className="text-xs">
+                  Ao continuar você concorda em receber contato da Electric
+                  Power e com os{" "}
+                  <strong className="text-green-water">
+                    Termos e Condições
+                  </strong>
+                </span>
+              </fieldset>
+
+              <button className="w-full h-12 rounded-3xl bg-yellow text-white font-bold">
+                Solicitar orçamento
+              </button>
             </form>
           </section>
         </div>

@@ -6,7 +6,7 @@ import { IoIosArrowForward } from "react-icons/io";
 export default function Questions() {
   return (
     <>
-      <div className="flex flex-col items-center w-screen h-full py-16 gap-7 relative">
+      <div className="flex flex-col items-center w-screen h-full py-16 gap-7 relative bg-white z-50">
         <div className="w-11/12 z-10">
           <h1 className="text-center text-xl md:text-2xl">
             <strong>Alguma pergunta?</strong> Estamos aqui para te ajudar!

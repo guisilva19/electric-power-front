@@ -49,9 +49,7 @@ export default function Steps() {
         <div className="flex lg:hidden w-screen h-[400px] bg-gray justify-center items-center rounded-sm">
           <div className="w-10/12 sm:w-8/12 flex flex-col items-start gap-4">
             <h2 className="text-white text-xl font-bold">
-              Instalar um sistema de 
-              energia solar é um
-              ótimo investimento
+              Instalar um sistema de energia solar é um ótimo investimento
             </h2>
             <p className="text-white text-sm sm:w-[532px]">
               Sua conta de luz ficará imune à inflação energética, e a
@@ -89,8 +87,8 @@ export default function Steps() {
           </div>
         </div>
 
-        <figure className="w-screen">
-          <Image src={Background} alt="Background" className="" />
+        <figure className="w-screen max-h-[900px]">
+          <Image src={Background} alt="Background" className="object-cover" />
         </figure>
       </div>
     </>

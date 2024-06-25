@@ -8,7 +8,7 @@ export default function Cycle() {
     <>
       <div className="w-screen pt-14 pb-20 flex flex-col items-center gap-14">
         <section className="flex flex-col items-center">
-          <h2 className="font-bold text-xl text-center md:text-3xl w-full">
+          <h2 className="font-bold text-xl text-center md:text-3xl w-full px-2">
             Transforme cada momento do seu dia com energia solar!
           </h2>
           <span className="text-lg md:text-[28px]">Descubra como funciona o ciclo.</span>
