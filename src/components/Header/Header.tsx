@@ -21,7 +21,7 @@ export default function Header() {
             </Link>
           </figure>
 
-          <nav className="hidden md:flex items-center gap-14 lg:gap-24 text-white h-full">
+          <nav className="hidden lg:flex items-center gap-14 lg:gap-24 text-white h-full">
             <ul className="flex gap-10">
               <li>
                 <Link href="" className="text-sm font-normal">
@@ -38,6 +38,11 @@ export default function Header() {
                   Serviços
                 </Link>
               </li>
+              <li>
+                <Link href="/contato" className="text-sm font-normal">
+                  Contato
+                </Link>
+              </li>
             </ul>
             <Link
               href="#"
@@ -47,7 +52,7 @@ export default function Header() {
             </Link>
           </nav>
 
-          <nav className="flex md:hidden">
+          <nav className="flex lg:hidden">
             <Dropdown backdrop="opaque">
               <DropdownTrigger>
                 <button className="outline-none">
@@ -63,6 +68,9 @@ export default function Header() {
                 </DropdownItem>
                 <DropdownItem key="servicos" href="/serviços">
                   Serviços
+                </DropdownItem>
+                <DropdownItem key="servicos" href="/contato">
+                  Contato
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>

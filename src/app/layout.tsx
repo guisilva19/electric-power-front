@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
-import { Sora } from "next/font/google";
-import "./globals.css";
 import Header from "@/components/Header/Header";
 import WhatsApp from "@/components/WhatsApp/WhatsApp";
 import Footer from "@/components/Footer/Footer";
+
+import type { Metadata } from "next";
+import { Sora } from "next/font/google";
 import { NextUIProvider } from "@nextui-org/react";
+
+import "./globals.css";
 
 const sora = Sora({ subsets: ["latin"] });
 

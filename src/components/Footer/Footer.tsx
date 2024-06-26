@@ -1,3 +1,4 @@
+"use client";
 import { Divider } from "@nextui-org/divider";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 
@@ -33,12 +34,9 @@ export default function Footer() {
           />
 
           <section
-            className="flex flex-col items-center justify-between text-white h-2/6 lg:flex-row w-full
+            className="flex flex-col items-center justify-center text-white h-2/6 lg:flex-row w-full
           "
           >
-            <p className="text-[10px] sm:text-xs font-light">
-              Rua Dr. José Humberto Nunes, Nº 381, Paraiso, Guanambi - BA
-            </p>
             <p className="text-[10px] sm:text-xs font-light">
               Electric Power – Todos os direitos reservados 2024
             </p>
