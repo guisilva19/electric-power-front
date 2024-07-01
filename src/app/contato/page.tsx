@@ -7,13 +7,13 @@ export default function Contato() {
   return (
     <>
       <main className="flex w-screen h-[90vh] items-center">
-        <div className="w-5/12 h-[90vh] flex flex-col justify-center items-center gap-10 py-10">
-          <section className="w-7/12">
+        <div className="w-full lg:w-6/12 xl:w-5/12 h-[90vh] flex flex-col justify-center items-center gap-10 py-10">
+          <section className="w-[330px] xs:w-[400px] lg:w-7/12">
             <h2 className="text-2xl">
               Entre em <strong>contato</strong> conosco!
             </h2>
           </section>
-          <form className="w-7/12 h-[600px] flex flex-col gap-4">
+          <form className="w-[330px] xs:w-[400px] lg:w-7/12 xxs:h-[600px] flex flex-col gap-4">
             <fieldset className="flex flex-col gap-2">
               <label htmlFor="nome" className="pl-3">
                 Nome Completo
@@ -62,7 +62,7 @@ export default function Contato() {
             </button>
           </form>
         </div>
-        <div className="w-7/12 h-[90vh]">
+        <div className="hidden lg:flex w-6/12 xl:w-7/12 h-[90vh]">
           <Image
             src={background}
             alt=""
