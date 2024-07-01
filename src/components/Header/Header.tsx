@@ -24,17 +24,17 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-14 lg:gap-24 text-white h-full">
             <ul className="flex gap-10">
               <li>
-                <Link href="" className="text-sm font-normal">
+                <Link href="/homologação" className="text-sm font-normal">
                   Homologação
                 </Link>
               </li>
               <li>
-                <Link href="" className="text-sm font-normal">
+                <Link href="/projetos" className="text-sm font-normal">
                   Projetos
                 </Link>
               </li>
               <li>
-                <Link href="" className="text-sm font-normal">
+                <Link href="/serviços" className="text-sm font-normal">
                   Serviços
                 </Link>
               </li>
