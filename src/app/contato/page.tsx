@@ -6,8 +6,8 @@ import { Input } from "@nextui-org/react";
 export default function Contato() {
   return (
     <>
-      <main className="flex w-screen h-[90vh]">
-        <div className="w-5/12 h-[90vh] flex flex-col justify-center items-center gap-10">
+      <main className="flex w-screen h-[90vh] items-center">
+        <div className="w-5/12 h-[90vh] flex flex-col justify-center items-center gap-10 py-10">
           <section className="w-7/12">
             <h2 className="text-2xl">
               Entre em <strong>contato</strong> conosco!
