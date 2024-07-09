@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Logo from "../../assets/logo.svg";
+import Logo from "../../assets/logo.png";
 import Link from "next/link";
 import { CgMenuLeft } from "react-icons/cg";
 import {
@@ -17,7 +17,7 @@ export default function Header() {
         <div className="w-full h-full px-10 flex items-center justify-between lg:px-20 xl:px-0 xl:w-[1240px] xl:mx-auto">
           <figure className="">
             <Link href="/">
-              <Image src={Logo} alt="LOGO EP" />
+              <Image src={Logo} alt="LOGO EP" width={90} />
             </Link>
           </figure>
 
