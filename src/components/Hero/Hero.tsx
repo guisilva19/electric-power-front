@@ -52,7 +52,7 @@ export default function Hero() {
 
   return (
     <>
-      <main className="w-screen relative">
+      <main className="w-screen relative" id="solicitar-orcamento">
         <figure className="w-screen">
           <div className="flex mdx:hidden w-screen bg-gradient-to-b from-[#2a1b3354] to-[#2A1B33] top-0 h-full z-20 absolute" />
           <div className="hidden mdx:flex w-screen bg-gradient-to-b from-transparent to-[#2A1B33] top-0 h-full z-20 absolute" />

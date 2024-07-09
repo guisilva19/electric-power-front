@@ -45,7 +45,7 @@ export default function Header() {
               </li>
             </ul>
             <Link
-              href="#"
+              href="/#solicitar-orcamento"
               className="text-sm px-5 py-2 bg-gray flex items-center text-center rounded-full font-semibold"
             >
               Solicitar orçamento

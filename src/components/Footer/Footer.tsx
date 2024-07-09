@@ -21,7 +21,7 @@ export default function Footer() {
               <FaLinkedin color="white" size={26} />
             </div>
             <Link
-              href=""
+              href="/#solicitar-orcamento"
               className="text-sm px-5 py-3 rounded-full border-white border-1 font-bold text-white hidden sm:flex"
             >
               Solicitar orçamento

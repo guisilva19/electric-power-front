@@ -13,7 +13,7 @@ export default function SubFooter() {
           </p>
         </section>
         <Link
-          href="#"
+          href="/#solicitar-orcamento"
           className="w-44 h-max mx-5 md:mx-0 text-sm px-8 py-3 bg-gray flex items-center text-center text-nowrap justify-center rounded-full font-semibold"
         >
           Solicitar orçamento
