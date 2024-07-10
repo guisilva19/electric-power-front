@@ -34,7 +34,7 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/serviços" className="text-sm font-normal">
+                <Link href="/servicos" className="text-sm font-normal">
                   Serviços
                 </Link>
               </li>
@@ -66,7 +66,7 @@ export default function Header() {
                 <DropdownItem key="projetos" href="/projetos">
                   Projetos
                 </DropdownItem>
-                <DropdownItem key="servicos" href="/serviços">
+                <DropdownItem key="servicos" href="/servicos">
                   Serviços
                 </DropdownItem>
                 <DropdownItem key="servicos" href="/contato">
