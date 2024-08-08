@@ -24,7 +24,7 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-14 lg:gap-24 text-white h-full">
             <ul className="flex gap-10">
               <li>
-                <Link href="/homologação" className="text-sm font-normal">
+                <Link href="/homologacao" className="text-sm font-normal">
                   Homologação
                 </Link>
               </li>
@@ -60,7 +60,7 @@ export default function Header() {
                 </button>
               </DropdownTrigger>
               <DropdownMenu aria-label="Link Actions">
-                <DropdownItem key="homologação" href="/homologação">
+                <DropdownItem key="homologacao" href="/homologacao">
                   Homologação
                 </DropdownItem>
                 <DropdownItem key="projetos" href="/projetos">
