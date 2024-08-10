@@ -27,7 +27,7 @@ const SelectWithDisjuntor = () => {
 
   return (
     <fieldset className="flex flex-col gap-4 p-4 rounded-md mt-2 lg:mt-4 w-full">
-      <legend className="text-sm lg:text-base">Disjuntor do padrão (medidor)</legend>
+      <legend className="text-sm">Disjuntor do padrão (medidor)</legend>
       {options.map((option) => (
         <div key={option.id} className="flex items-center">
           <input

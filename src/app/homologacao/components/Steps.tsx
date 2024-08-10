@@ -65,7 +65,7 @@ export default function Steps({ step }: { step: number }) {
           </p>
         </li>
       </ul>
-      <ul className="hidden lg:flex justify-between w-full lg:w-[840px]">
+      {/* <ul className="hidden lg:flex justify-between w-full lg:w-[840px]">
         <li className="flex items-center gap-2">
           <p className="font-medium">Insira seus dados</p>
         </li>
@@ -78,7 +78,7 @@ export default function Steps({ step }: { step: number }) {
         <li className="flex items-center gap-2">
           <p className="font-medium">Valide dados</p>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 }
