@@ -9,7 +9,7 @@ import FormTwo from "./components/FormTwo";
 import FormThree from "./components/FormThree";
 
 export default function Homologacao() {
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [magnification, setMagnification] = useState<boolean | null>(null);
   const [hasInstalled, setHasInstalled] = useState<boolean | null>(null);
 
