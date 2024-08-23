@@ -28,20 +28,6 @@ export default function FormOne({
           <Input type="text" className="w-full" id="nome" />
         </fieldset>
 
-        <fieldset className="flex flex-col gap-2">
-          <label htmlFor="telefone" className="pl-3 text-sm">
-            Telefone
-          </label>
-          <Input type="text" className="w-full" id="telefone" />
-        </fieldset>
-
-        <fieldset className="flex flex-col gap-2">
-          <label htmlFor="numero" className="pl-3 text-sm">
-            Número da conta contrato
-          </label>
-          <Input type="text" className="w-full" id="numero" />
-        </fieldset>
-
         <div className="flex flex-col lg:flex-row gap-2 lg:gap-4">
           <fieldset className="flex flex-col gap-2 w-full">
             <label htmlFor="email" className="pl-3 text-sm">
@@ -57,6 +43,13 @@ export default function FormOne({
             <Input type="text" className="w-full" id="telefone" />
           </fieldset>
         </div>
+
+        <fieldset className="flex flex-col gap-2">
+          <label htmlFor="numero" className="pl-3 text-sm">
+            Número da conta contrato do local de instalação (Geradora)
+          </label>
+          <Input type="text" className="w-full" id="numero" />
+        </fieldset>
 
         <fieldset className="flex gap-4">
           <legend className="pl-3 pb-2 text-sm">

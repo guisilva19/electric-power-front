@@ -11,14 +11,8 @@ export default function FormThree({
   setStep: Dispatch<SetStateAction<number>>;
   hasInstalled: boolean | null;
 }) {
-  const [barramento, setBarramento] = useState<boolean | null>(null);
-  const [transformer, setTransformer] = useState<boolean | null>(null);
-
-  const [files, setFiles] = useState<File[]>([]);
-  const handleFileUpload = (files: File[]) => {
-    setFiles(files);
-    console.log(files);
-  };
+  const [barramento, setBarramento] = useState<boolean | null>(false);
+  const [transformer, setTransformer] = useState<boolean | null>(false);
 
   return (
     <>
@@ -52,6 +46,8 @@ export default function FormThree({
                 name="medidor"
                 value="yes"
                 className="form-radio"
+                defaultChecked={barramento === true ? true : false}
+
                 onChange={(e) => {
                   setBarramento(e.target.value === "no" ? false : true);
                 }}
@@ -66,6 +62,7 @@ export default function FormThree({
                 id="no-medidor"
                 name="medidor"
                 value="no"
+                defaultChecked={barramento === false ? true : false}
                 className="form-radio"
                 onChange={(e) => {
                   setBarramento(e.target.value === "no" ? false : true);

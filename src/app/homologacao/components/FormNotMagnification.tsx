@@ -92,6 +92,7 @@ export default function FormNotMagnification({
               name="installed"
               value="yes"
               className="form-radio"
+              defaultChecked={hasInstalled === true ? true : false}
               onChange={(e) => {
                 setHasInstalled(e.target.value === "yes" ? true : false);
               }}
@@ -107,6 +108,7 @@ export default function FormNotMagnification({
               name="installed"
               value="no"
               className="form-radio"
+              defaultChecked={hasInstalled === false ? true : false}
               onChange={(e) => {
                 setHasInstalled(e.target.value === "yes" ? true : false);
               }}
