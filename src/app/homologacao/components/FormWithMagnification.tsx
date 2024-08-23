@@ -70,7 +70,7 @@ export default function FormWithMagnification({
         </fieldset>
 
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="telefone" className="pl-3 text-sm w-8/12">
+          <label htmlFor="telefone" className="pl-3 text-sm w-10/12">
             Modelo dos inversores inseridos
           </label>
           <Input type="text" className="w-full" id="telefone" />

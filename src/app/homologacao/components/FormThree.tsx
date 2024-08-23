@@ -17,7 +17,7 @@ export default function FormThree({
   return (
     <>
       <form className="w-[320px] xs:w-[400px] lg:w-7/12 flex flex-col gap-2 lg:gap-4">
-        <div className="flex flex-col lg:flex-row lg:justify-between gap-6 lg:gap-4 mt-2 lg:mt-4">
+        <div className="flex flex-collg:flex-row lg:justify-between gap-6 lg:gap-4 mt-2 lg:mt-4">
           {!hasInstalled && (
             <fieldset className="flex flex-col gap-2 w-full">
               <label htmlFor="email" className="pl-3 text-sm">
@@ -34,54 +34,13 @@ export default function FormThree({
           </fieldset>
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:h-14 lg:justify-between gap-6 lg:gap-4 mt-2 lg:mt-4">
-          <fieldset className="flex gap-4 w-full">
-            <legend className="pl-3 pb-2 text-sm">
-              Existe quadro de barramento?
-            </legend>
-            <div className="flex items-center pl-3">
-              <input
-                type="radio"
-                id="yes-medidor"
-                name="medidor"
-                value="yes"
-                className="form-radio"
-                defaultChecked={barramento === true ? true : false}
-
-                onChange={(e) => {
-                  setBarramento(e.target.value === "no" ? false : true);
-                }}
-              />
-              <label htmlFor="yes-medidor" className="pl-2 text-xs lg:text-sm">
-                Sim
-              </label>
-            </div>
-            <div className="flex items-center">
-              <input
-                type="radio"
-                id="no-medidor"
-                name="medidor"
-                value="no"
-                defaultChecked={barramento === false ? true : false}
-                className="form-radio"
-                onChange={(e) => {
-                  setBarramento(e.target.value === "no" ? false : true);
-                }}
-              />
-              <label htmlFor="no-medidor" className="pl-2 text-xs lg:text-sm">
-                Não
-              </label>
-            </div>
+        <div className="flex flex-col lg:flex-row lg:justify-between gap-6 lg:gap-4 mt-2 lg:mt-4">
+          <fieldset className="flex flex-col gap-2 w-full">
+            <label htmlFor="email" className="pl-3 text-sm">
+              Distância média entre inversor e quadro de distribuição (m)
+            </label>
+            <Input type="number" className="w-full" id="email" />
           </fieldset>
-
-          {barramento && (
-            <fieldset className="flex flex-col gap-2 w-full">
-              <label htmlFor="email" className="pl-3 text-sm">
-                Qual o disjuntor do barramento?
-              </label>
-              <Input type="text" className="w-full" id="email" />
-            </fieldset>
-          )}
         </div>
 
         <div className="flex flex-col lg:h-14 lg:flex-row lg:justify-between gap-6 lg:gap-4 mt-2 lg:mt-4">
