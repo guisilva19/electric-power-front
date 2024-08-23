@@ -18,8 +18,8 @@ const SelectWithDisjuntor = () => {
   };
 
   const options = [
-    { id: "40" },
     { id: "50" },
+    { id: "63" },
     { id: "70" },
     { id: "100" },
     { id: "outro" },

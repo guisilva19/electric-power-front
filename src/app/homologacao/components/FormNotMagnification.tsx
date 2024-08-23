@@ -1,8 +1,14 @@
 "use client";
 import { Input } from "@nextui-org/react";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-export default function FormNotMagnification() {
+export default function FormNotMagnification({
+  hasInstalled,
+  setHasInstalled,
+}: {
+  hasInstalled: boolean | null;
+  setHasInstalled: Dispatch<SetStateAction<boolean | null>>;
+}) {
   const [receiveCredit, setReceiveCredit] = useState<boolean>(false);
   return (
     <>
@@ -84,13 +90,11 @@ export default function FormNotMagnification() {
               type="radio"
               id="yes-installed"
               name="installed"
-              value="yes-installed"
+              value="yes"
               className="form-radio"
-              // onChange={(e) => {
-              //   setMagnification(
-              //     e.target.value === "not-installed" ? false : true
-              //   );
-              // }}
+              onChange={(e) => {
+                setHasInstalled(e.target.value === "yes" ? true : false);
+              }}
             />
             <label htmlFor="yes-installed" className="pl-2 text-xs lg:text-sm">
               Sim
@@ -101,13 +105,11 @@ export default function FormNotMagnification() {
               type="radio"
               id="not-installed"
               name="installed"
-              value="not-installed"
+              value="no"
               className="form-radio"
-              // onChange={(e) => {
-              //   setMagnification(
-              //     e.target.value === "not-installed" ? false : true
-              //   );
-              // }}
+              onChange={(e) => {
+                setHasInstalled(e.target.value === "yes" ? true : false);
+              }}
             />
             <label htmlFor="not-installed" className="pl-2 text-xs lg:text-sm">
               Não

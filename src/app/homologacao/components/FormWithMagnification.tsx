@@ -1,8 +1,14 @@
 "use client";
 import { Input } from "@nextui-org/react";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-export default function FormWithMagnification() {
+export default function FormWithMagnification({
+  hasInstalled,
+  setHasInstalled,
+}: {
+  hasInstalled: boolean | null;
+  setHasInstalled: Dispatch<SetStateAction<boolean | null>>;
+}) {
   const [receiveCredit, setReceiveCredit] = useState<boolean>(false);
 
   return (
@@ -117,8 +123,12 @@ export default function FormWithMagnification() {
               type="radio"
               id="yes-installed"
               name="ampliacao"
-              value="yes-installed"
+              value="yes"
               className="form-radio"
+              defaultChecked={hasInstalled === true ? true : false}
+              onChange={(e) => {
+                setHasInstalled(e.target.value === "yes" ? true : false);
+              }}
             />
             <label htmlFor="yes-installed" className="pl-2 text-xs lg:text-sm">
               Sim
@@ -129,8 +139,12 @@ export default function FormWithMagnification() {
               type="radio"
               id="not-installed"
               name="ampliacao"
-              value="not-installed"
+              value="no"
               className="form-radio"
+              defaultChecked={hasInstalled === false ? true : false}
+              onChange={(e) => {
+                setHasInstalled(e.target.value === "yes" ? true : false);
+              }}
             />
             <label htmlFor="not-installed" className="pl-2 text-xs lg:text-sm">
               Não

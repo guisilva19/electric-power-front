@@ -16,7 +16,7 @@ export default function FormOne({
 }) {
   return (
     <>
-      <form className="w-[320px] xs:w-[400px] lg:w-7/12 flex flex-col gap-2 LG:GAP-4">
+      <form className="w-[320px] xs:w-[400px] lg:w-7/12 flex flex-col gap-2 lg:gap-4">
         <span className="text-sm text-center">
           Obs: Insira as informações do <strong>titular da conta</strong>
         </span>
@@ -58,27 +58,6 @@ export default function FormOne({
           </fieldset>
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:justify-between gap-6 lg:gap-4 mt-2 lg:mt-4">
-          <Select label="Tipo de ligação" className="w-full h-12">
-            {["MONOFÁSICA", "BIFÁSICA", "TRIFÁSICA"].map((item, index) => (
-              <SelectItem className="" key={index}>
-                {item}
-              </SelectItem>
-            ))}
-          </Select>
-
-          <Select label="Tensão de fornecimento" className="w-full">
-            {["220/380", "127/220"].map((item, index) => (
-              <SelectItem key={index}>{item}</SelectItem>
-            ))}
-          </Select>
-        </div>
-
-        <div className="flex flex-col lg:flex-row lg:justify-between gap-6 mt-2 lg:mt-4">
-          <SelectWithDisjuntor />
-          <SelectWithLigacao />
-        </div>
-
         <fieldset className="flex gap-4">
           <legend className="pl-3 pb-2 text-sm">
             É amplicação de projeto existente?
@@ -90,6 +69,7 @@ export default function FormOne({
               name="ampliacao"
               value="yes"
               className="form-radio"
+              defaultChecked={magnification === true ? true : false}
               onChange={(e) => {
                 setMagnification(e.target.value === "no" ? false : true);
               }}
@@ -103,6 +83,7 @@ export default function FormOne({
               type="radio"
               id="no"
               name="ampliacao"
+              defaultChecked={magnification === false ? true : false}
               value="no"
               className="form-radio"
               onChange={(e) => {

@@ -12,7 +12,7 @@ export default function Steps({ step }: { step: number }) {
           } rounded-full flex items-center justify-center border-2 border-green-water`}
         >
           <p
-            className={`font-semibold text-lg ${
+            className={`justify-center font-semibold text-lg ${
               step !== 1 ? "text-green-water" : "text-white"
             }`}
           >
@@ -27,7 +27,7 @@ export default function Steps({ step }: { step: number }) {
           } rounded-full flex items-center justify-center border-2 border-green-water`}
         >
           <p
-            className={`font-semibold text-lg ${
+            className={`justify-center font-semibold text-lg ${
               step !== 2 ? "text-green-water" : "text-white"
             }`}
           >
@@ -42,7 +42,7 @@ export default function Steps({ step }: { step: number }) {
           } rounded-full flex items-center justify-center border-2 border-green-water`}
         >
           <p
-            className={`font-semibold text-lg ${
+            className={`justify-center font-semibold text-lg ${
               step !== 3 ? "text-green-water" : "text-white"
             }`}
           >
@@ -57,7 +57,7 @@ export default function Steps({ step }: { step: number }) {
           } rounded-full flex items-center justify-center border-2 border-green-water`}
         >
           <p
-            className={`font-semibold text-lg ${
+            className={`justify-center font-semibold text-lg ${
               step !== 4 ? "text-green-water" : "text-white"
             }`}
           >
