@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import {
   FieldErrors,
   useForm,
@@ -6,29 +6,19 @@ import {
   UseFormHandleSubmit,
   UseFormRegister,
 } from "react-hook-form";
-import { formSchemaOne } from "@/lib/schema";
+import {
+  formSchemaOne,
+  formSchemaThree,
+  formSchemaTwoNotMagnification,
+  formSchemaTwoWithMagnification,
+} from "@/lib/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-export interface FormSchemaOne {
-  nome: string;
-  email: string;
-  telefone: string;
-  numero_conta_contrato: string;
-}
-
-export interface FormSchemaTwo {
-  nome: string;
-  email: string;
-  telefone: string;
-  numero_conta_contrato: string;
-}
-
-export interface FormSchemaThree {
-  nome: string;
-  email: string;
-  telefone: string;
-  numero_conta_contrato: string;
-}
+import {
+  FormSchemaOne,
+  FormSchemaThree,
+  FormSchemaTwo,
+  FormSchemaTwoMag,
+} from "@/interface/interface";
 
 interface IContext {
   errorsOne: FieldErrors<FormSchemaOne>;
@@ -41,10 +31,21 @@ interface IContext {
   handleSubmitTwo: UseFormHandleSubmit<FormSchemaTwo, undefined>;
   registerFormTwo: UseFormRegister<FormSchemaTwo>;
 
+  errorsTwoMag: FieldErrors<FormSchemaTwoMag>;
+  getValuesTwoMag: UseFormGetValues<FormSchemaTwoMag>;
+  handleSubmitTwoMag: UseFormHandleSubmit<FormSchemaTwoMag, undefined>;
+  registerFormTwoMag: UseFormRegister<FormSchemaTwoMag>;
+
   errorsThree: FieldErrors<FormSchemaThree>;
   getValuesThree: UseFormGetValues<FormSchemaThree>;
   handleSubmitThree: UseFormHandleSubmit<FormSchemaThree, undefined>;
   registerFormThree: UseFormRegister<FormSchemaThree>;
+
+  magnification: boolean;
+  hasInstalled: boolean;
+
+  setMagnification: Dispatch<SetStateAction<boolean>>;
+  setHasInstalled: Dispatch<SetStateAction<boolean>>;
 }
 
 export const Context = React.createContext<IContext>({} as IContext);
@@ -54,13 +55,25 @@ export const ContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const [magnification, setMagnification] = useState<boolean>(false);
+  const [hasInstalled, setHasInstalled] = useState<boolean>(true);
+
   const {
     register: registerFormThree,
     handleSubmit: handleSubmitThree,
     formState: { errors: errorsThree },
     getValues: getValuesThree,
   } = useForm<FormSchemaThree>({
-    resolver: yupResolver(formSchemaOne),
+    resolver: yupResolver(formSchemaThree),
+  });
+
+  const {
+    register: registerFormTwoMag,
+    handleSubmit: handleSubmitTwoMag,
+    formState: { errors: errorsTwoMag },
+    getValues: getValuesTwoMag,
+  } = useForm<FormSchemaTwoMag>({
+    resolver: yupResolver(formSchemaTwoWithMagnification),
   });
 
   const {
@@ -69,7 +82,7 @@ export const ContextProvider = ({
     formState: { errors: errorsTwo },
     getValues: getValuesTwo,
   } = useForm<FormSchemaTwo>({
-    resolver: yupResolver(formSchemaOne),
+    resolver: yupResolver(formSchemaTwoNotMagnification),
   });
 
   const {
@@ -94,10 +107,21 @@ export const ContextProvider = ({
         handleSubmitTwo,
         registerFormTwo,
 
+        errorsTwoMag,
+        getValuesTwoMag,
+        handleSubmitTwoMag,
+        registerFormTwoMag,
+
         errorsThree,
         getValuesThree,
         handleSubmitThree,
         registerFormThree,
+
+        hasInstalled,
+        magnification,
+
+        setHasInstalled,
+        setMagnification,
       }}
     >
       {children}

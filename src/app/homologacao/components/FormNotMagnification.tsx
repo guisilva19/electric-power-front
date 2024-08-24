@@ -1,46 +1,72 @@
 "use client";
+import { useGlobalContext } from "@/context/context";
 import { Input } from "@nextui-org/react";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 
-export default function FormNotMagnification({
-  hasInstalled,
-  setHasInstalled,
-}: {
-  hasInstalled: boolean | null;
-  setHasInstalled: Dispatch<SetStateAction<boolean | null>>;
-}) {
+export default function FormNotMagnification() {
+  const { hasInstalled, setHasInstalled, registerFormTwo, errorsTwo } =
+    useGlobalContext();
   const [receiveCredit, setReceiveCredit] = useState<boolean>(false);
+
   return (
     <>
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-4">
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="email" className="pl-3 text-sm">
+          <label htmlFor="1" className="pl-3 text-sm">
             Quantidade de módulos fotovoltaicos
           </label>
-          <Input type="number" className="w-full" id="email" />
+          <Input
+            type="number"
+            className="w-full"
+            id="1"
+            errorMessage={errorsTwo?.quantidade_modulos_inseridos?.message}
+            isInvalid={errorsTwo.quantidade_modulos_inseridos ? true : false}
+            {...registerFormTwo("quantidade_modulos_inseridos")}
+          />
         </fieldset>
 
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="telefone" className="pl-3 text-sm">
+          <label htmlFor="2" className="pl-3 text-sm">
             Modelo dos módulos fotovoltaicos
           </label>
-          <Input type="text" className="w-full" id="telefone" />
+          <Input
+            type="text"
+            className="w-full"
+            id="2"
+            errorMessage={errorsTwo?.modelo_do_modulo_inserido?.message}
+            isInvalid={errorsTwo.modelo_do_modulo_inserido ? true : false}
+            {...registerFormTwo("modelo_do_modulo_inserido")}
+          />
         </fieldset>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-4">
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="email" className="pl-3 text-sm">
+          <label htmlFor="3" className="pl-3 text-sm">
             Quantidade de inversores
           </label>
-          <Input type="number" className="w-full" id="email" />
+          <Input
+            type="number"
+            className="w-full"
+            id="3"
+            errorMessage={errorsTwo?.quantidade_inversores_inseridos?.message}
+            isInvalid={errorsTwo.quantidade_inversores_inseridos ? true : false}
+            {...registerFormTwo("quantidade_inversores_inseridos")}
+          />
         </fieldset>
 
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="telefone" className="pl-3 text-sm">
+          <label htmlFor="4" className="pl-3 text-sm">
             Modelo dos inversores
           </label>
-          <Input type="text" className="w-full" id="telefone" />
+          <Input
+            type="text"
+            className="w-full"
+            id="4"
+            errorMessage={errorsTwo?.modelo_do_inversor_inserido?.message}
+            isInvalid={errorsTwo.modelo_do_inversor_inserido ? true : false}
+            {...registerFormTwo("modelo_do_inversor_inserido")}
+          />
         </fieldset>
       </div>
 
@@ -122,31 +148,31 @@ export default function FormNotMagnification({
       {receiveCredit && (
         <>
           <fieldset className="flex flex-col gap-2 w-full">
-            <label htmlFor="email" className="pl-3 text-sm">
+            <label htmlFor="5" className="pl-3 text-sm">
               Conta contrato a receber créditos 01
             </label>
-            <Input type="number" className="w-full" id="email" />
+            <Input type="number" className="w-full" id="5" />
           </fieldset>
 
           <fieldset className="flex flex-col gap-2 w-full">
-            <label htmlFor="telefone" className="pl-3 text-sm flex-col">
+            <label htmlFor="6" className="pl-3 text-sm flex-col">
               Media consumo conta contrato 01 (Obs: valor referente a kWh)
             </label>
-            <Input type="text" className="w-full" id="telefone" />
+            <Input type="text" className="w-full" id="6" />
           </fieldset>
 
           <fieldset className="flex flex-col gap-2 w-full">
-            <label htmlFor="email" className="pl-3 text-sm">
+            <label htmlFor="7" className="pl-3 text-sm">
               Conta contrato a receber créditos 02
             </label>
-            <Input type="number" className="w-full" id="email" />
+            <Input type="number" className="w-full" id="7" />
           </fieldset>
 
           <fieldset className="flex flex-col gap-2 w-full">
-            <label htmlFor="telefone" className="pl-3 w-10/12 text-sm flex-col">
+            <label htmlFor="8" className="pl-3 w-10/12 text-sm flex-col">
               Media consumo conta contrato 02 (Obs: valor referente a kWh)
             </label>
-            <Input type="text" className="w-full" id="telefone" />
+            <Input type="text" className="w-full" id="8" />
           </fieldset>
         </>
       )}

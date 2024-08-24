@@ -4,10 +4,8 @@ import { FileUpload } from "@/components/File/File";
 
 export default function FormFour({
   setStep,
-  hasInstalled,
 }: {
   setStep: Dispatch<SetStateAction<number>>;
-  hasInstalled: boolean | null;
 }) {
   const [document, setDocument] = useState<File[]>([]);
   const handleFileUploadDocuments = (file: File[]) => {
@@ -44,7 +42,11 @@ export default function FormFour({
                 <strong className="text-red-500">*</strong>
               </p>
             </label>
-            <FileUpload onChange={handleFileUploadDocuments} setFiles={setDocument} files={document}/>
+            <FileUpload
+              onChange={handleFileUploadDocuments}
+              setFiles={setDocument}
+              files={document}
+            />
           </fieldset>
         </div>
 
@@ -56,7 +58,11 @@ export default function FormFour({
                 <strong className="text-red-500">*</strong>
               </p>
             </label>
-            <FileUpload onChange={handleFileUploadAccount}  setFiles={setAccountFile} files={accountFile} />
+            <FileUpload
+              onChange={handleFileUploadAccount}
+              setFiles={setAccountFile}
+              files={accountFile}
+            />
           </fieldset>
         </div>
 
@@ -68,7 +74,11 @@ export default function FormFour({
                 <strong className="text-red-500">*</strong>
               </p>
             </label>
-            <FileUpload onChange={handleFileUploadEquipment} setFiles={setEquipments} files={equipments} />
+            <FileUpload
+              onChange={handleFileUploadEquipment}
+              setFiles={setEquipments}
+              files={equipments}
+            />
           </fieldset>
         </div>
 
@@ -80,7 +90,11 @@ export default function FormFour({
                 <strong className="text-red-500">*</strong>
               </p>
             </label>
-            <FileUpload onChange={handleFileUploadEquipmentMain} setFiles={setEquipmentsMain} files={equipmentsMain} />
+            <FileUpload
+              onChange={handleFileUploadEquipmentMain}
+              setFiles={setEquipmentsMain}
+              files={equipmentsMain}
+            />
           </fieldset>
         </div>
 

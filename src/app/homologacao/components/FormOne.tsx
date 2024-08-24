@@ -1,5 +1,6 @@
 "use client";
-import { FormSchemaOne, useGlobalContext } from "@/context/context";
+import { useGlobalContext } from "@/context/context";
+import { FormSchemaOne } from "@/interface/interface";
 import { Input } from "@nextui-org/react";
 import { Dispatch, SetStateAction } from "react";
 import {
@@ -11,14 +12,16 @@ import { toast } from "sonner";
 
 export default function FormOne({
   setStep,
-  magnification,
-  setMagnification,
 }: {
   setStep: Dispatch<SetStateAction<number>>;
-  magnification: boolean | null;
-  setMagnification: Dispatch<SetStateAction<boolean | null>>;
 }) {
-  const { errorsOne, registerFormOne, handleSubmitOne } = useGlobalContext();
+  const {
+    errorsOne,
+    registerFormOne,
+    handleSubmitOne,
+    magnification,
+    setMagnification,
+  } = useGlobalContext();
 
   const onChange = (data: FormSchemaOne) => {
     if (magnification !== null) {

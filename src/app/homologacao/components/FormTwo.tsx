@@ -2,26 +2,34 @@
 import { Dispatch, SetStateAction } from "react";
 import FormNotMagnification from "./FormNotMagnification";
 import FormWithMagnification from "./FormWithMagnification";
+import { useGlobalContext } from "@/context/context";
 
 export default function FormTwo({
-  magnification,
-  hasInstalled,
   setStep,
-  setHasInstalled,
 }: {
-  magnification: boolean | null;
-  hasInstalled: boolean | null;
   setStep: Dispatch<SetStateAction<number>>;
-  setHasInstalled: Dispatch<SetStateAction<boolean | null>>;
 }) {
+  const { magnification, handleSubmitTwo, handleSubmitTwoMag, errorsTwo, errorsTwoMag } =
+    useGlobalContext();
+
+  const nextStep = (data: any) => {
+    setStep((prev) => (prev += 1));
+  };
+
+  console.log("errorsTwo", errorsTwo);
+  console.log("errorsTwoMag", errorsTwoMag);
+
   return (
     <>
-      <form className="w-[320px] xs:w-[400px] lg:w-7/12 flex flex-col gap-2 lg:gap-4">
-        {magnification ? (
-          <FormWithMagnification setHasInstalled={setHasInstalled} hasInstalled={hasInstalled} />
-        ) : (
-          <FormNotMagnification setHasInstalled={setHasInstalled} hasInstalled={hasInstalled} />
-        )}
+      <form
+        onSubmit={
+          !magnification
+            ? handleSubmitTwo(nextStep)
+            : handleSubmitTwoMag(nextStep)
+        }
+        className="w-[320px] xs:w-[400px] lg:w-7/12 flex flex-col gap-2 lg:gap-4"
+      >
+        {magnification ? <FormWithMagnification /> : <FormNotMagnification />}
         <div className="w-full flex justify-between">
           <button
             type="button"
@@ -31,9 +39,8 @@ export default function FormTwo({
             Voltar
           </button>
           <button
-            type="button"
+            type="submit"
             className="w-max h-[52px] rounded-3xl bg-green-water text-white px-8 py-3 font-semibold mt-6"
-            onClick={() => setStep((prev) => (prev += 1))}
           >
             Proximo
           </button>

@@ -1,79 +1,144 @@
 "use client";
+import { useGlobalContext } from "@/context/context";
 import { Input } from "@nextui-org/react";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 
-export default function FormWithMagnification({
-  hasInstalled,
-  setHasInstalled,
-}: {
-  hasInstalled: boolean | null;
-  setHasInstalled: Dispatch<SetStateAction<boolean | null>>;
-}) {
+export default function FormWithMagnification() {
+  const { hasInstalled, setHasInstalled, registerFormTwoMag, errorsTwoMag } =
+    useGlobalContext();
   const [receiveCredit, setReceiveCredit] = useState<boolean>(false);
 
   return (
     <>
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-4">
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="email" className="pl-3 text-sm w-10/12">
+          <label htmlFor="1" className="pl-3 text-sm w-10/12">
             Quantidade de módulos anteriormente homologados
           </label>
-          <Input type="number" className="w-full" id="email" />
+          <Input
+            type="number"
+            className="w-full"
+            id="1"
+            errorMessage={errorsTwoMag?.quantidade_modulos_homologados?.message}
+            isInvalid={
+              errorsTwoMag.quantidade_modulos_homologados ? true : false
+            }
+            {...registerFormTwoMag("quantidade_modulos_homologados")}
+          />
         </fieldset>
 
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="telefone" className="pl-3 text-sm w-10/12">
+          <label htmlFor="2" className="pl-3 text-sm w-10/12">
             Modelo dos módulos anteriormente homologados
           </label>
-          <Input type="text" className="w-full" id="telefone" />
+          <Input
+            type="text"
+            className="w-full"
+            id="2"
+            errorMessage={errorsTwoMag?.modelo_do_modulo_homologado?.message}
+            isInvalid={errorsTwoMag.modelo_do_modulo_homologado ? true : false}
+            {...registerFormTwoMag("modelo_do_modulo_homologado")}
+          />
         </fieldset>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-4">
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="email" className="pl-3 text-sm w-10/12">
+          <label htmlFor="3" className="pl-3 text-sm w-10/12">
             Quantidade de inversores anteriormente homologados
           </label>
-          <Input type="number" className="w-full" id="email" />
+          <Input
+            type="number"
+            className="w-full"
+            id="3"
+            errorMessage={
+              errorsTwoMag?.quantidade_inversores_homologados?.message
+            }
+            isInvalid={
+              errorsTwoMag.quantidade_inversores_homologados ? true : false
+            }
+            {...registerFormTwoMag("quantidade_inversores_homologados")}
+          />
         </fieldset>
 
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="telefone" className="pl-3 text-sm w-10/12">
+          <label htmlFor="4" className="pl-3 text-sm w-10/12">
             Modelo dos inversores anteriormente homologados
           </label>
-          <Input type="text" className="w-full" id="telefone" />
+          <Input
+            type="text"
+            className="w-full"
+            id="4"
+            errorMessage={errorsTwoMag?.modelo_do_inversor_homologado?.message}
+            isInvalid={
+              errorsTwoMag.modelo_do_inversor_homologado ? true : false
+            }
+            {...registerFormTwoMag("modelo_do_inversor_homologado")}
+          />
         </fieldset>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-4">
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="email" className="pl-3 text-sm w-10/12">
+          <label htmlFor="5" className="pl-3 text-sm w-10/12">
             Quantidade de módulos fotovoltaicos inseridos
           </label>
-          <Input type="number" className="w-full" id="email" />
+          <Input
+            type="number"
+            className="w-full"
+            id="5"
+            errorMessage={errorsTwoMag?.quantidade_modulos_inseridos?.message}
+            isInvalid={errorsTwoMag.quantidade_modulos_inseridos ? true : false}
+            {...registerFormTwoMag("quantidade_modulos_inseridos")}
+          />
         </fieldset>
 
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="telefone" className="pl-3 text-sm w-10/12">
+          <label htmlFor="6" className="pl-3 text-sm w-10/12">
             Modelo dos módulos fotovoltaicos inseridos
           </label>
-          <Input type="text" className="w-full" id="telefone" />
+          <Input
+            type="text"
+            className="w-full"
+            id="6"
+            errorMessage={errorsTwoMag?.modelo_do_modulo_inserido?.message}
+            isInvalid={errorsTwoMag.modelo_do_modulo_inserido ? true : false}
+            {...registerFormTwoMag("modelo_do_modulo_inserido")}
+          />
         </fieldset>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-4">
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="email" className="pl-3 text-sm w-10/12">
+          <label htmlFor="7" className="pl-3 text-sm w-10/12">
             Quantidade de inversores inseridos
           </label>
-          <Input type="number" className="w-full" id="email" />
+          <Input
+            type="number"
+            className="w-full"
+            id="7"
+            errorMessage={
+              errorsTwoMag?.quantidade_inversores_inseridos?.message
+            }
+            isInvalid={
+              errorsTwoMag.quantidade_inversores_inseridos ? true : false
+            }
+            {...registerFormTwoMag("quantidade_inversores_inseridos")}
+          />
         </fieldset>
 
         <fieldset className="flex flex-col gap-2 w-full">
-          <label htmlFor="telefone" className="pl-3 text-sm w-10/12">
+          <label htmlFor="8" className="pl-3 text-sm w-10/12">
             Modelo dos inversores inseridos
           </label>
-          <Input type="text" className="w-full" id="telefone" />
+          <Input
+            type="text"
+            className="w-full"
+            id="8"
+            errorMessage={errorsTwoMag?.modelo_do_inversor_inserido?.message}
+            isInvalid={errorsTwoMag.modelo_do_inversor_inserido ? true : false}
+            {...registerFormTwoMag("modelo_do_inversor_inserido")}
+          />
         </fieldset>
       </div>
 
@@ -155,31 +220,31 @@ export default function FormWithMagnification({
       {receiveCredit && (
         <>
           <fieldset className="flex flex-col gap-2 w-full">
-            <label htmlFor="email" className="pl-3 text-sm">
+            <label htmlFor="9" className="pl-3 text-sm">
               Conta contrato a receber créditos 01
             </label>
-            <Input type="text" className="w-full" id="email" />
+            <Input type="text" className="w-full" id="9" />
           </fieldset>
 
           <fieldset className="flex flex-col gap-2 w-full">
-            <label htmlFor="telefone" className="pl-3 text-sm flex-col">
+            <label htmlFor="10" className="pl-3 text-sm flex-col">
               Media consumo conta contrato 01 (Obs: valor referente a kWh)
             </label>
-            <Input type="number" className="w-full" id="telefone" />
+            <Input type="number" className="w-full" id="10" />
           </fieldset>
 
           <fieldset className="flex flex-col gap-2 w-full">
-            <label htmlFor="email" className="pl-3 text-sm">
+            <label htmlFor="11" className="pl-3 text-sm">
               Conta contrato a receber créditos 02
             </label>
-            <Input type="text" className="w-full" id="email" />
+            <Input type="text" className="w-full" id="11" />
           </fieldset>
 
           <fieldset className="flex flex-col gap-2 w-full">
-            <label htmlFor="telefone" className="pl-3 w-10/12 text-sm flex-col">
+            <label htmlFor="12" className="pl-3 w-10/12 text-sm flex-col">
               Media consumo conta contrato 02 (Obs: valor referente a kWh)
             </label>
-            <Input type="number" className="w-full" id="telefone" />
+            <Input type="number" className="w-full" id="12" />
           </fieldset>
         </>
       )}

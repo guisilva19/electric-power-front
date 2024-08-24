@@ -3,15 +3,15 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { Input, Select, SelectItem, DatePicker } from "@nextui-org/react";
 import SelectWithDisjuntor from "./SelectDisjuntor";
 import SelectWithLigacao from "./SelectLigacao";
+import { useGlobalContext } from "@/context/context";
 
 export default function FormThree({
   setStep,
-  hasInstalled,
 }: {
   setStep: Dispatch<SetStateAction<number>>;
-  hasInstalled: boolean | null;
 }) {
-  const [barramento, setBarramento] = useState<boolean | null>(false);
+  const { hasInstalled } = useGlobalContext();
+
   const [transformer, setTransformer] = useState<boolean | null>(false);
 
   return (

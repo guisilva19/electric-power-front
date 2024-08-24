@@ -11,8 +11,6 @@ import FormFour from "./components/FormFour";
 
 export default function Homologacao() {
   const [step, setStep] = useState(1);
-  const [magnification, setMagnification] = useState<boolean | null>(false);
-  const [hasInstalled, setHasInstalled] = useState<boolean | null>(true);
 
   return (
     <>
@@ -33,29 +31,11 @@ export default function Homologacao() {
 
           <Steps step={step} />
 
-          {step === 1 && (
-            <FormOne
-              setStep={setStep}
-              setMagnification={setMagnification}
-              magnification={magnification}
+          {step === 1 && <FormOne setStep={setStep} />}
+          {step === 2 && <FormTwo setStep={setStep} />}
 
-            />
-          )}
-          {step === 2 && (
-            <FormTwo
-              setStep={setStep}
-              magnification={magnification}
-              hasInstalled={hasInstalled}
-              setHasInstalled={setHasInstalled}
-            />
-          )}
-
-          {step === 3 && (
-            <FormThree setStep={setStep} hasInstalled={hasInstalled} />
-          )}
-          {step === 4 && (
-            <FormFour setStep={setStep} hasInstalled={hasInstalled} />
-          )}
+          {step === 3 && <FormThree setStep={setStep} />}
+          {step === 4 && <FormFour setStep={setStep} />}
         </div>
       </main>
       <SubFooter />
