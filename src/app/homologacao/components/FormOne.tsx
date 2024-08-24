@@ -1,8 +1,12 @@
 "use client";
-import { Input, Select, SelectItem } from "@nextui-org/react";
+import { FormSchemaOne, useGlobalContext } from "@/context/context";
+import { Input } from "@nextui-org/react";
 import { Dispatch, SetStateAction } from "react";
-import SelectWithDisjuntor from "./SelectDisjuntor";
-import SelectWithLigacao from "./SelectLigacao";
+import {
+  FieldErrors,
+  UseFormHandleSubmit,
+  UseFormRegister,
+} from "react-hook-form";
 import { toast } from "sonner";
 
 export default function FormOne({
@@ -14,9 +18,24 @@ export default function FormOne({
   magnification: boolean | null;
   setMagnification: Dispatch<SetStateAction<boolean | null>>;
 }) {
+  const { errorsOne, registerFormOne, handleSubmitOne } = useGlobalContext();
+
+  const onChange = (data: FormSchemaOne) => {
+    if (magnification !== null) {
+      setStep((prev) => (prev += 1));
+    } else {
+      toast.error(
+        "Selecione uma das opções para amplicação de projeto existente"
+      );
+    }
+  };
+
   return (
     <>
-      <form className="w-[320px] xs:w-[400px] lg:w-7/12 flex flex-col gap-2 lg:gap-4">
+      <form
+        onSubmit={handleSubmitOne(onChange)}
+        className="w-[320px] xs:w-[400px] lg:w-7/12 flex flex-col gap-2 lg:gap-4"
+      >
         <span className="text-sm text-center">
           Obs: Insira as informações do <strong>titular da conta</strong>
         </span>
@@ -25,7 +44,15 @@ export default function FormOne({
           <label htmlFor="nome" className="pl-3 text-sm">
             Nome Completo
           </label>
-          <Input type="text" className="w-full" id="nome" />
+          <Input
+            type="text"
+            className="w-full"
+            placeholder="Seu nome completo"
+            id="nome"
+            errorMessage={errorsOne?.nome?.message}
+            isInvalid={errorsOne.nome ? true : false}
+            {...registerFormOne("nome")}
+          />
         </fieldset>
 
         <div className="flex flex-col lg:flex-row gap-2 lg:gap-4">
@@ -33,14 +60,30 @@ export default function FormOne({
             <label htmlFor="email" className="pl-3 text-sm">
               E-mail
             </label>
-            <Input type="text" className="w-full" id="email" />
+            <Input
+              placeholder="Seu e-mail"
+              type="text"
+              className="w-full"
+              id="email"
+              errorMessage={errorsOne?.email?.message}
+              isInvalid={errorsOne.email ? true : false}
+              {...registerFormOne("email")}
+            />
           </fieldset>
 
           <fieldset className="flex flex-col gap-2 w-full">
             <label htmlFor="telefone" className="pl-3 text-sm">
               Telefone
             </label>
-            <Input type="text" className="w-full" id="telefone" />
+            <Input
+              type="text"
+              placeholder="DDD + Telefone"
+              className="w-full"
+              id="telefone"
+              errorMessage={errorsOne?.telefone?.message}
+              isInvalid={errorsOne.telefone ? true : false}
+              {...registerFormOne("telefone")}
+            />
           </fieldset>
         </div>
 
@@ -48,7 +91,15 @@ export default function FormOne({
           <label htmlFor="numero" className="pl-3 text-sm">
             Número da conta contrato do local de instalação (Geradora)
           </label>
-          <Input type="text" className="w-full" id="numero" />
+          <Input
+            type="text"
+            className="w-full"
+            id="numero"
+            placeholder="Número da conta contrato"
+            errorMessage={errorsOne?.numero_conta_contrato?.message}
+            isInvalid={errorsOne.numero_conta_contrato ? true : false}
+            {...registerFormOne("numero_conta_contrato")}
+          />
         </fieldset>
 
         <fieldset className="flex gap-4">
@@ -92,17 +143,8 @@ export default function FormOne({
         <div className="w-full flex justify-between">
           <button />
           <button
-            type="button"
+            type="submit"
             className="w-max h-[52px] rounded-3xl bg-green-water text-white px-8 py-3 font-semibold mt-6"
-            onClick={() => {
-              if (magnification !== null) {
-                setStep((prev) => (prev += 1));
-              } else {
-                toast.error(
-                  "Selecione uma das opções para amplicação de projeto existente"
-                );
-              }
-            }}
           >
             Proximo
           </button>

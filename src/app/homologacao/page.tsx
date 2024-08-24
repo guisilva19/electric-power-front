@@ -38,6 +38,7 @@ export default function Homologacao() {
               setStep={setStep}
               setMagnification={setMagnification}
               magnification={magnification}
+
             />
           )}
           {step === 2 && (
