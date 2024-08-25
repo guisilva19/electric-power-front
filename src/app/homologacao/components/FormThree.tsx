@@ -10,13 +10,22 @@ export default function FormThree({
 }: {
   setStep: Dispatch<SetStateAction<number>>;
 }) {
-  const { hasInstalled } = useGlobalContext();
+  const { hasInstalled, handleSubmitThree, registerFormThree } =
+    useGlobalContext();
 
   const [transformer, setTransformer] = useState<boolean | null>(false);
 
+  const nextStep = (data: any) => {
+    console.log("teste");
+    // setStep((prev) => (prev += 1));
+  };
+
   return (
     <>
-      <form className="w-[320px] xs:w-[400px] lg:w-7/12 flex flex-col gap-2 lg:gap-4">
+      <form
+        onSubmit={handleSubmitThree(nextStep)}
+        className="w-[320px] xs:w-[400px] lg:w-7/12 flex flex-col gap-2 lg:gap-4"
+      >
         <div className="flex flex-collg:flex-row lg:justify-between gap-6 lg:gap-4 mt-2 lg:mt-4">
           {!hasInstalled && (
             <fieldset className="flex flex-col gap-2 w-full">
@@ -128,7 +137,6 @@ export default function FormThree({
           <button
             type="button"
             className="w-max h-[52px] rounded-3xl bg-green-water text-white px-8 py-3 font-semibold mt-6"
-            onClick={() => setStep((prev) => (prev += 1))}
           >
             Proximo
           </button>

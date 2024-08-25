@@ -9,15 +9,13 @@ export default function FormTwo({
 }: {
   setStep: Dispatch<SetStateAction<number>>;
 }) {
-  const { magnification, handleSubmitTwo, handleSubmitTwoMag, errorsTwo, errorsTwoMag } =
+  const { magnification, handleSubmitTwo, handleSubmitTwoMag } =
     useGlobalContext();
 
   const nextStep = (data: any) => {
     setStep((prev) => (prev += 1));
   };
 
-  console.log("errorsTwo", errorsTwo);
-  console.log("errorsTwoMag", errorsTwoMag);
 
   return (
     <>

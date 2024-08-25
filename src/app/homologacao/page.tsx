@@ -10,7 +10,7 @@ import FormThree from "./components/FormThree";
 import FormFour from "./components/FormFour";
 
 export default function Homologacao() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(3);
 
   return (
     <>
