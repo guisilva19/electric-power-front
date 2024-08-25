@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Electric Power",
   description: "Deixe que o sol pague a sua conta de energia!",
   icons: {
-    icon: "/logo.svg",
+    icon: "./logo.svg",
   },
 };
 
