@@ -19,6 +19,7 @@ import {
   FormSchemaTwo,
   FormSchemaTwoMag,
 } from "@/interface/interface";
+import useHomologation from "@/hook/useHomologation/useHomologation";
 
 interface IContext {
   errorsOne: FieldErrors<FormSchemaOne>;
@@ -46,6 +47,8 @@ interface IContext {
 
   setMagnification: Dispatch<SetStateAction<boolean>>;
   setHasInstalled: Dispatch<SetStateAction<boolean>>;
+
+  handleHomologation: (data: any) => void;
 }
 
 export const Context = React.createContext<IContext>({} as IContext);
@@ -57,6 +60,20 @@ export const ContextProvider = ({
 }) => {
   const [magnification, setMagnification] = useState<boolean>(false);
   const [hasInstalled, setHasInstalled] = useState<boolean>(true);
+
+  const { register } = useHomologation();
+
+  const handleHomologation = async (data: any) => {
+    const body = {
+      ...getValuesOne(),
+      ...getValuesTwo(),
+      ...getValuesTwoMag(),
+      ...getValuesThree(),
+      ...data,
+    };
+
+    await register(body);
+  };
 
   const {
     register: registerFormThree,
@@ -122,6 +139,8 @@ export const ContextProvider = ({
 
         setHasInstalled,
         setMagnification,
+
+        handleHomologation,
       }}
     >
       {children}

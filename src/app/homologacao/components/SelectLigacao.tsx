@@ -1,7 +1,11 @@
 "use client";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-const SelectWithLigacao = () => {
+const SelectCable = ({
+  setValue,
+}: {
+  setValue: Dispatch<SetStateAction<string>>;
+}) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [customInput, setCustomInput] = useState("");
 
@@ -9,15 +13,23 @@ const SelectWithLigacao = () => {
     const value = event.target.value;
     setSelectedOption(value);
     if (value !== "outro ") {
+      setValue(value);
       setCustomInput("");
     }
   };
 
   const handleCustomInputChange = (event: any) => {
     setCustomInput(event.target.value);
+    setValue(event.target.value);
   };
 
-  const options = [{ id: "6" }, { id: "10" }, { id: "16" }, { id: "25" }, { id: "outro " }];
+  const options = [
+    { id: "6" },
+    { id: "10" },
+    { id: "16" },
+    { id: "25" },
+    { id: "outro " },
+  ];
 
   return (
     <fieldset className="flex flex-col gap-4 p-4 rounded-md mt-2 lg:mt-4 w-full">
@@ -55,4 +67,4 @@ const SelectWithLigacao = () => {
   );
 };
 
-export default SelectWithLigacao;
+export default SelectCable;

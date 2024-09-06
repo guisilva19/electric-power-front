@@ -26,18 +26,7 @@ export interface FormSchemaTwo {
 export interface FormSchemaThree {
   quantidade_medidores: string;
   distancia_entre_inversor_e_distribuicao: string;
-  tipo_de_ligacao: string;
-  tensao_de_fornecimento: string;
-  disjuntor_do_padrao: string;
-  cabo_do_padrao: string;
-  transformador: boolean;
   potencia_transformador: string;
   carga_instalada: string;
 }
 
-// carga_instalada                         String?
-// outras_conta_recebera_credito           Boolean?
-// numero_conta_contrato_02                String?
-// media_consumo_conta_02                  String?
-// numero_conta_contrato_03                String?
-// media_consumo_conta_03                  String?

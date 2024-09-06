@@ -2,22 +2,42 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { Input, Select, SelectItem, DatePicker } from "@nextui-org/react";
 import SelectWithDisjuntor from "./SelectDisjuntor";
-import SelectWithLigacao from "./SelectLigacao";
 import { useGlobalContext } from "@/context/context";
+import SelectCable from "./SelectLigacao";
+import { toast } from "sonner";
 
 export default function FormThree({
   setStep,
 }: {
   setStep: Dispatch<SetStateAction<number>>;
 }) {
-  const { hasInstalled, handleSubmitThree, registerFormThree } =
-    useGlobalContext();
+  const {
+    hasInstalled,
+    handleSubmitThree,
+    registerFormThree,
+    errorsThree,
+    handleHomologation,
+  } = useGlobalContext();
 
   const [transformer, setTransformer] = useState<boolean | null>(false);
+  const [disjuntor, setDisjuntor] = useState<string>("");
+  const [cabo, setCabo] = useState<string>("");
+  const [ligacao, setLigacao] = useState<string>("");
+  const [tensao, setTensao] = useState<string>("");
 
-  const nextStep = (data: any) => {
-    console.log("teste");
-    // setStep((prev) => (prev += 1));
+  const nextStep = async (data: any) => {
+    if (cabo && ligacao && tensao && disjuntor) {
+      // setStep((prev) => (prev += 1));
+      handleHomologation({
+        transformador: transformer,
+        disjuntor_do_padrao: disjuntor,
+        cabo_do_padrao: cabo,
+        tipo_de_ligacao: ligacao,
+        tensao_de_fornecimento: tensao,
+      });
+    } else {
+      toast.error("Insira todas as informações");
+    }
   };
 
   return (
@@ -39,16 +59,49 @@ export default function FormThree({
             <label htmlFor="email" className="pl-3 text-sm">
               Quantidade de medidores
             </label>
-            <Input type="number" className="w-full" id="email" />
+            <Input
+              type="number"
+              className="w-full"
+              id="email"
+              errorMessage={errorsThree?.quantidade_medidores?.message}
+              isInvalid={errorsThree.quantidade_medidores ? true : false}
+              {...registerFormThree("quantidade_medidores")}
+            />
           </fieldset>
         </div>
 
         <div className="flex flex-col lg:flex-row lg:justify-between gap-6 lg:gap-4 mt-2 lg:mt-4">
           <fieldset className="flex flex-col gap-2 w-full">
-            <label htmlFor="email" className="pl-3 text-sm">
+            <label htmlFor="email" className="pl-3 text-sm pr-14">
               Distância média entre inversor e quadro de distribuição (m)
             </label>
-            <Input type="number" className="w-full" id="email" />
+            <Input
+              type="number"
+              className="w-full"
+              id="email"
+              errorMessage={
+                errorsThree?.distancia_entre_inversor_e_distribuicao?.message
+              }
+              isInvalid={
+                errorsThree.distancia_entre_inversor_e_distribuicao
+                  ? true
+                  : false
+              }
+              {...registerFormThree("distancia_entre_inversor_e_distribuicao")}
+            />
+          </fieldset>
+          <fieldset className="flex flex-col gap-2 w-full">
+            <label htmlFor="email" className="pl-3 text-sm pr-14">
+              Carga instalada no local de instalação (kWh)
+            </label>
+            <Input
+              type="number"
+              className="w-full"
+              id="email"
+              errorMessage={errorsThree?.carga_instalada?.message}
+              isInvalid={errorsThree.carga_instalada ? true : false}
+              {...registerFormThree("carga_instalada")}
+            />
           </fieldset>
         </div>
 
@@ -64,6 +117,7 @@ export default function FormThree({
                 name="tranformer"
                 value="yes"
                 className="form-radio"
+                defaultChecked={transformer === false ? true : false}
                 onChange={(e) => {
                   setTransformer(e.target.value === "no" ? false : true);
                 }}
@@ -82,6 +136,7 @@ export default function FormThree({
                 name="tranformer"
                 value="no"
                 className="form-radio"
+                defaultChecked={transformer === false ? true : false}
                 onChange={(e) => {
                   setTransformer(e.target.value === "no" ? false : true);
                 }}
@@ -100,30 +155,43 @@ export default function FormThree({
               <label htmlFor="email" className="pl-3 text-sm">
                 Qual a potência do transformador?
               </label>
-              <Input type="number" className="w-full" id="email" />
+              <Input
+                type="number"
+                className="w-full"
+                id="email"
+                errorMessage={errorsThree?.potencia_transformador?.message}
+                isInvalid={errorsThree.potencia_transformador ? true : false}
+                {...registerFormThree("potencia_transformador")}
+              />
             </fieldset>
           )}
         </div>
 
         <div className="flex flex-col lg:flex-row lg:justify-between gap-6 lg:gap-4 mt-2 lg:mt-4">
-          <Select label="Tipo de ligação" className="w-full h-12">
-            {["MONOFÁSICA", "BIFÁSICA", "TRIFÁSICA"].map((item, index) => (
-              <SelectItem className="" key={index}>
-                {item}
-              </SelectItem>
+          <Select
+            label="Tipo de ligação"
+            className="w-full h-12"
+            onChange={(event) => setLigacao(event.target.value)}
+          >
+            {["MONOFÁSICA", "BIFÁSICA", "TRIFÁSICA"].map((item) => (
+              <SelectItem key={item}>{item}</SelectItem>
             ))}
           </Select>
 
-          <Select label="Tensão de fornecimento" className="w-full">
-            {["220/380", "127/220"].map((item, index) => (
-              <SelectItem key={index}>{item}</SelectItem>
+          <Select
+            label="Tensão de fornecimento"
+            className="w-full"
+            onChange={(event) => setTensao(event.target.value)}
+          >
+            {["220/380", "127/220"].map((item) => (
+              <SelectItem key={item}>{item}</SelectItem>
             ))}
           </Select>
         </div>
 
         <div className="flex flex-col lg:flex-row lg:justify-between gap-6 ">
-          <SelectWithDisjuntor />
-          <SelectWithLigacao />
+          <SelectWithDisjuntor setValue={setDisjuntor} />
+          <SelectCable setValue={setCabo} />
         </div>
 
         <div className="w-full flex justify-between">
@@ -134,10 +202,7 @@ export default function FormThree({
           >
             Voltar
           </button>
-          <button
-            type="button"
-            className="w-max h-[52px] rounded-3xl bg-green-water text-white px-8 py-3 font-semibold mt-6"
-          >
+          <button className="w-max h-[52px] rounded-3xl bg-green-water text-white px-8 py-3 font-semibold mt-6">
             Proximo
           </button>
         </div>

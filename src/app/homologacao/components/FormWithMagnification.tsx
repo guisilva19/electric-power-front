@@ -151,7 +151,7 @@ export default function FormWithMagnification() {
             <input
               type="radio"
               id="yes"
-              name="ampliacao"
+              name="credit"
               value="yes"
               className="form-radio"
               onChange={(e) => {
@@ -166,7 +166,7 @@ export default function FormWithMagnification() {
             <input
               type="radio"
               id="no"
-              name="ampliacao"
+              name="credit"
               value="no"
               className="form-radio"
               onChange={(e) => {
@@ -187,7 +187,7 @@ export default function FormWithMagnification() {
             <input
               type="radio"
               id="yes-installed"
-              name="ampliacao"
+              name="installed"
               value="yes"
               className="form-radio"
               defaultChecked={hasInstalled === true ? true : false}
@@ -203,7 +203,7 @@ export default function FormWithMagnification() {
             <input
               type="radio"
               id="not-installed"
-              name="ampliacao"
+              name="installed"
               value="no"
               className="form-radio"
               defaultChecked={hasInstalled === false ? true : false}

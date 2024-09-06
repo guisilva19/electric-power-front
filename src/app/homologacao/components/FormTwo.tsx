@@ -9,7 +9,7 @@ export default function FormTwo({
 }: {
   setStep: Dispatch<SetStateAction<number>>;
 }) {
-  const { magnification, handleSubmitTwo, handleSubmitTwoMag } =
+  const { magnification, handleSubmitTwo, handleSubmitTwoMag, handleHomologation } =
     useGlobalContext();
 
   const nextStep = (data: any) => {

@@ -1,7 +1,11 @@
 "use client";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-const SelectWithDisjuntor = () => {
+const SelectWithDisjuntor = ({
+  setValue,
+}: {
+  setValue: Dispatch<SetStateAction<string>>;
+}) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [customInput, setCustomInput] = useState("");
 
@@ -9,12 +13,14 @@ const SelectWithDisjuntor = () => {
     const value = event.target.value;
     setSelectedOption(value);
     if (value !== "outro") {
+      setValue(value);
       setCustomInput("");
     }
   };
 
   const handleCustomInputChange = (event: any) => {
     setCustomInput(event.target.value);
+    setValue(event.target.value);
   };
 
   const options = [

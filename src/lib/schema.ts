@@ -47,13 +47,11 @@ export const formSchemaTwoNotMagnification = yup.object().shape({
 });
 
 export const formSchemaThree = yup.object().shape({
-  quantidade_medidores: yup.string().required("Insira a quantidade de medidores"),
-  distancia_entre_inversor_e_distribuicao: yup.string().required("Insira a distância média entre inversor e distribuição"),
-  tipo_de_ligacao: yup.string().required("Insira o tipo de ligação"),
-  tensao_de_fornecimento: yup.string().required("Insira a tensão do fornecimento"),
-  disjuntor_do_padrao: yup.string().required("Insira o disjuntor do padrão"),
-  cabo_do_padrao: yup.string().required("Insira o mm do cabo do padrão"),
-  transformador: yup.boolean().required("Insira se possui tranformador próprio"),
-  potencia_transformador: yup.string().required("Insira a potência do tranformador"),
+  quantidade_medidores: yup
+    .string()
+    .required("Insira a quantidade de medidores"),
+  distancia_entre_inversor_e_distribuicao: yup
+    .string()
+    .required("Insira a distância média entre inversor e distribuição"),
   carga_instalada: yup.string().required("Informe a carga instalada"),
 });
