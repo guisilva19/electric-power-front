@@ -27,7 +27,7 @@ export default function FormThree({
 
   const nextStep = async (data: any) => {
     if (cabo && ligacao && tensao && disjuntor) {
-      // setStep((prev) => (prev += 1));
+      setStep((prev) => (prev += 1));
       handleHomologation({
         transformador: transformer,
         disjuntor_do_padrao: disjuntor,
@@ -90,22 +90,7 @@ export default function FormThree({
               {...registerFormThree("distancia_entre_inversor_e_distribuicao")}
             />
           </fieldset>
-          <fieldset className="flex flex-col gap-2 w-full">
-            <label htmlFor="email" className="pl-3 text-sm pr-14">
-              Carga instalada no local de instalação (kWh)
-            </label>
-            <Input
-              type="number"
-              className="w-full"
-              id="email"
-              errorMessage={errorsThree?.carga_instalada?.message}
-              isInvalid={errorsThree.carga_instalada ? true : false}
-              {...registerFormThree("carga_instalada")}
-            />
-          </fieldset>
-        </div>
 
-        <div className="flex flex-col lg:h-14 lg:flex-row lg:justify-between gap-6 lg:gap-4 mt-2 lg:mt-4">
           <fieldset className="flex gap-4 w-full">
             <legend className="pl-3 pb-2 text-sm">
               Existe transformador próprio?
@@ -149,22 +134,6 @@ export default function FormThree({
               </label>
             </div>
           </fieldset>
-
-          {transformer && (
-            <fieldset className="flex flex-col gap-2 w-full">
-              <label htmlFor="email" className="pl-3 text-sm">
-                Qual a potência do transformador?
-              </label>
-              <Input
-                type="number"
-                className="w-full"
-                id="email"
-                errorMessage={errorsThree?.potencia_transformador?.message}
-                isInvalid={errorsThree.potencia_transformador ? true : false}
-                {...registerFormThree("potencia_transformador")}
-              />
-            </fieldset>
-          )}
         </div>
 
         <div className="flex flex-col lg:flex-row lg:justify-between gap-6 lg:gap-4 mt-2 lg:mt-4">
@@ -202,7 +171,7 @@ export default function FormThree({
           >
             Voltar
           </button>
-          <button className="w-max h-[52px] rounded-3xl bg-green-water text-white px-8 py-3 font-semibold mt-6">
+          <button type="submit" className="w-max h-[52px] rounded-3xl bg-green-water text-white px-8 py-3 font-semibold mt-6">
             Proximo
           </button>
         </div>
@@ -210,3 +179,5 @@ export default function FormThree({
     </>
   );
 }
+
+

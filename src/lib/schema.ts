@@ -53,5 +53,4 @@ export const formSchemaThree = yup.object().shape({
   distancia_entre_inversor_e_distribuicao: yup
     .string()
     .required("Insira a distância média entre inversor e distribuição"),
-  carga_instalada: yup.string().required("Informe a carga instalada"),
 });

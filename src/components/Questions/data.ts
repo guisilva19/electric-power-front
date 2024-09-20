@@ -1,4 +1,4 @@
-import { IQuestion } from "@/interfaces";
+import { IQuestion } from "@/interface/interface";
 
 export const questions: IQuestion[] = [
   {

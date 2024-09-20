@@ -26,7 +26,10 @@ export interface FormSchemaTwo {
 export interface FormSchemaThree {
   quantidade_medidores: string;
   distancia_entre_inversor_e_distribuicao: string;
-  potencia_transformador: string;
-  carga_instalada: string;
+  // potencia_transformador: string;
 }
 
+export interface IQuestion {
+  title: string;
+  description: string;
+}

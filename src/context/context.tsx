@@ -70,6 +70,7 @@ export const ContextProvider = ({
       ...getValuesTwoMag(),
       ...getValuesThree(),
       ...data,
+      ampliacao: magnification,
     };
 
     await register(body);
