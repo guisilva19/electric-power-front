@@ -4,9 +4,14 @@ import { Input } from "@nextui-org/react";
 import { useState } from "react";
 
 export default function FormWithMagnification() {
-  const { hasInstalled, setHasInstalled, registerFormTwoMag, errorsTwoMag } =
-    useGlobalContext();
-  const [receiveCredit, setReceiveCredit] = useState<boolean>(false);
+  const {
+    hasInstalled,
+    setHasInstalled,
+    registerFormTwoMag,
+    errorsTwoMag,
+    receiveCredit,
+    setReceiveCredit,
+  } = useGlobalContext();
 
   return (
     <>

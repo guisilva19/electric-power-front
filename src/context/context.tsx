@@ -44,6 +44,7 @@ interface IContext {
 
   magnification: boolean;
   hasInstalled: boolean;
+  receiveCredit: boolean;
   transformer: boolean;
   disjuntor: string;
   cabo: string;
@@ -52,11 +53,54 @@ interface IContext {
 
   setMagnification: Dispatch<SetStateAction<boolean>>;
   setHasInstalled: Dispatch<SetStateAction<boolean>>;
+  setReceiveCredit: Dispatch<SetStateAction<boolean>>;
   setTransformer: Dispatch<SetStateAction<boolean>>;
   setDisjuntor: Dispatch<SetStateAction<string>>;
   setCabo: Dispatch<SetStateAction<string>>;
   setLigacao: Dispatch<SetStateAction<string>>;
   setTensao: Dispatch<SetStateAction<string>>;
+
+  conta01: {
+    numero_conta_contrato: string;
+    media_consumo_conta: string;
+  };
+  conta02: {
+    numero_conta_contrato: string;
+    media_consumo_conta: string;
+  };
+  conta03: {
+    numero_conta_contrato: string;
+    media_consumo_conta: string;
+  };
+  conta04: {
+    numero_conta_contrato: string;
+    media_consumo_conta: string;
+  };
+
+  setConta01: Dispatch<
+    SetStateAction<{
+      numero_conta_contrato: string;
+      media_consumo_conta: string;
+    }>
+  >;
+  setConta02: Dispatch<
+    SetStateAction<{
+      numero_conta_contrato: string;
+      media_consumo_conta: string;
+    }>
+  >;
+  setConta03: Dispatch<
+    SetStateAction<{
+      numero_conta_contrato: string;
+      media_consumo_conta: string;
+    }>
+  >;
+  setConta04: Dispatch<
+    SetStateAction<{
+      numero_conta_contrato: string;
+      media_consumo_conta: string;
+    }>
+  >;
 
   handleHomologation: (data: any) => void;
 }
@@ -71,10 +115,39 @@ export const ContextProvider = ({
   const [magnification, setMagnification] = useState<boolean>(false);
   const [hasInstalled, setHasInstalled] = useState<boolean>(true);
   const [transformer, setTransformer] = useState<boolean>(false);
+  const [receiveCredit, setReceiveCredit] = useState<boolean>(false);
   const [disjuntor, setDisjuntor] = useState<string>("");
   const [cabo, setCabo] = useState<string>("");
   const [ligacao, setLigacao] = useState<string>("");
   const [tensao, setTensao] = useState<string>("");
+  const [conta01, setConta01] = useState<{
+    numero_conta_contrato: string;
+    media_consumo_conta: string;
+  }>({
+    numero_conta_contrato: "",
+    media_consumo_conta: "",
+  });
+  const [conta02, setConta02] = useState<{
+    numero_conta_contrato: string;
+    media_consumo_conta: string;
+  }>({
+    numero_conta_contrato: "",
+    media_consumo_conta: "",
+  });
+  const [conta03, setConta03] = useState<{
+    numero_conta_contrato: string;
+    media_consumo_conta: string;
+  }>({
+    numero_conta_contrato: "",
+    media_consumo_conta: "",
+  });
+  const [conta04, setConta04] = useState<{
+    numero_conta_contrato: string;
+    media_consumo_conta: string;
+  }>({
+    numero_conta_contrato: "",
+    media_consumo_conta: "",
+  });
 
   const { register } = useHomologation();
 
@@ -90,6 +163,7 @@ export const ContextProvider = ({
       tipo_de_ligacao: ligacao,
       tensao_de_fornecimento: tensao,
       ampliacao: magnification,
+      outras_conta_recebera_credito: receiveCredit,
     };
 
     await register(body);
@@ -161,9 +235,11 @@ export const ContextProvider = ({
         ligacao,
         tensao,
         transformer,
+        receiveCredit,
 
         setHasInstalled,
         setMagnification,
+        setReceiveCredit,
         setCabo,
         setDisjuntor,
         setLigacao,
@@ -171,6 +247,15 @@ export const ContextProvider = ({
         setTransformer,
 
         handleHomologation,
+        setConta01,
+        setConta02,
+        setConta03,
+        setConta04,
+
+        conta01,
+        conta02,
+        conta03,
+        conta04,
       }}
     >
       {children}
