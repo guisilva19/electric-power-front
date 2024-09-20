@@ -16,25 +16,21 @@ export default function FormThree({
     handleSubmitThree,
     registerFormThree,
     errorsThree,
-    handleHomologation,
+    setCabo,
+    setDisjuntor,
+    setTensao,
+    setTransformer,
+    setLigacao,
+    cabo,
+    disjuntor,
+    tensao,
+    transformer,
+    ligacao,
   } = useGlobalContext();
-
-  const [transformer, setTransformer] = useState<boolean | null>(false);
-  const [disjuntor, setDisjuntor] = useState<string>("");
-  const [cabo, setCabo] = useState<string>("");
-  const [ligacao, setLigacao] = useState<string>("");
-  const [tensao, setTensao] = useState<string>("");
 
   const nextStep = async (data: any) => {
     if (cabo && ligacao && tensao && disjuntor) {
       setStep((prev) => (prev += 1));
-      handleHomologation({
-        transformador: transformer,
-        disjuntor_do_padrao: disjuntor,
-        cabo_do_padrao: cabo,
-        tipo_de_ligacao: ligacao,
-        tensao_de_fornecimento: tensao,
-      });
     } else {
       toast.error("Insira todas as informações");
     }
@@ -99,12 +95,12 @@ export default function FormThree({
               <input
                 type="radio"
                 id="yes-tranformer"
-                name="tranformer"
+                name="transformer"
                 value="yes"
                 className="form-radio"
-                defaultChecked={transformer === false ? true : false}
-                onChange={(e) => {
-                  setTransformer(e.target.value === "no" ? false : true);
+                checked={transformer === true}
+                onChange={() => {
+                  setTransformer(true);
                 }}
               />
               <label
@@ -118,12 +114,12 @@ export default function FormThree({
               <input
                 type="radio"
                 id="no-tranformer"
-                name="tranformer"
+                name="transformer"
                 value="no"
                 className="form-radio"
-                defaultChecked={transformer === false ? true : false}
-                onChange={(e) => {
-                  setTransformer(e.target.value === "no" ? false : true);
+                checked={transformer === false}
+                onChange={() => {
+                  setTransformer(false);
                 }}
               />
               <label
@@ -171,7 +167,10 @@ export default function FormThree({
           >
             Voltar
           </button>
-          <button type="submit" className="w-max h-[52px] rounded-3xl bg-green-water text-white px-8 py-3 font-semibold mt-6">
+          <button
+            type="submit"
+            className="w-max h-[52px] rounded-3xl bg-green-water text-white px-8 py-3 font-semibold mt-6"
+          >
             Proximo
           </button>
         </div>
@@ -179,5 +178,3 @@ export default function FormThree({
     </>
   );
 }
-
-

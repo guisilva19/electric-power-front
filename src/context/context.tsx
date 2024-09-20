@@ -44,9 +44,19 @@ interface IContext {
 
   magnification: boolean;
   hasInstalled: boolean;
+  transformer: boolean;
+  disjuntor: string;
+  cabo: string;
+  ligacao: string;
+  tensao: string;
 
   setMagnification: Dispatch<SetStateAction<boolean>>;
   setHasInstalled: Dispatch<SetStateAction<boolean>>;
+  setTransformer: Dispatch<SetStateAction<boolean>>;
+  setDisjuntor: Dispatch<SetStateAction<string>>;
+  setCabo: Dispatch<SetStateAction<string>>;
+  setLigacao: Dispatch<SetStateAction<string>>;
+  setTensao: Dispatch<SetStateAction<string>>;
 
   handleHomologation: (data: any) => void;
 }
@@ -60,16 +70,25 @@ export const ContextProvider = ({
 }) => {
   const [magnification, setMagnification] = useState<boolean>(false);
   const [hasInstalled, setHasInstalled] = useState<boolean>(true);
+  const [transformer, setTransformer] = useState<boolean>(false);
+  const [disjuntor, setDisjuntor] = useState<string>("");
+  const [cabo, setCabo] = useState<string>("");
+  const [ligacao, setLigacao] = useState<string>("");
+  const [tensao, setTensao] = useState<string>("");
 
   const { register } = useHomologation();
 
-  const handleHomologation = async (data: any) => {
+  const handleHomologation = async () => {
     const body = {
       ...getValuesOne(),
       ...getValuesTwo(),
       ...getValuesTwoMag(),
       ...getValuesThree(),
-      ...data,
+      transformador: transformer,
+      disjuntor_do_padrao: disjuntor,
+      cabo_do_padrao: cabo,
+      tipo_de_ligacao: ligacao,
+      tensao_de_fornecimento: tensao,
       ampliacao: magnification,
     };
 
@@ -137,9 +156,19 @@ export const ContextProvider = ({
 
         hasInstalled,
         magnification,
+        cabo,
+        disjuntor,
+        ligacao,
+        tensao,
+        transformer,
 
         setHasInstalled,
         setMagnification,
+        setCabo,
+        setDisjuntor,
+        setLigacao,
+        setTensao,
+        setTransformer,
 
         handleHomologation,
       }}
