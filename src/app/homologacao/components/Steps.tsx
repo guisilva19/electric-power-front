@@ -5,7 +5,7 @@ import arrow from "@/assets/arrow.svg";
 export default function Steps({ step }: { step: number }) {
   return (
     <div className="w-full flex flex-col justify-center items-center gap-3">
-      <ul className="flex items-center gap-2 lg:gap-4 lg:w-[755px]">
+      <ul className="flex items-center gap-2 lg:gap-4 lg:w-[575px]">
         <li
           className={`w-10 h-10 md:w-12 md:h-12 ${
             step === 1 ? "bg-green-water" : "bg-transparent"
@@ -62,21 +62,6 @@ export default function Steps({ step }: { step: number }) {
             }`}
           >
             4
-          </p>
-        </li>
-        <FaArrowRightLong color="#38ADB6" className="flex lg:hidden" />
-        <Image src={arrow} alt="seta" className="hidden lg:flex lg:w-24" />
-        <li
-          className={`w-10 h-10 md:w-12 md:h-12 ${
-            step === 5 ? "bg-green-water" : "bg-transparent"
-          } rounded-full flex items-center justify-center border-2 border-green-water`}
-        >
-          <p
-            className={`justify-center font-semibold text-lg ${
-              step !== 5 ? "text-green-water" : "text-white"
-            }`}
-          >
-            5
           </p>
         </li>
       </ul>

@@ -1,12 +1,16 @@
 "use client";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FileUpload } from "@/components/File/File";
+import { toast } from "sonner";
+import { useGlobalContext } from "@/context/context";
 
 export default function FormFour({
   setStep,
 }: {
   setStep: Dispatch<SetStateAction<number>>;
 }) {
+  const { handleHomologation } = useGlobalContext();
+
   const [document, setDocument] = useState<File[]>([]);
   const handleFileUploadDocuments = (file: File[]) => {
     setDocument(file);
@@ -27,9 +31,29 @@ export default function FormFour({
     setEquipmentsMain(file);
   };
 
+  const nextStep = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (
+      equipmentsMain.length > 0 &&
+      equipments.length > 0 &&
+      accountFile.length > 0 &&
+      document.length > 0
+    ) {
+      handleHomologation([
+        ...document,
+        ...accountFile,
+        ...equipments,
+        ...equipmentsMain,
+      ]);
+      setStep((prev) => (prev += 1));
+    } else {
+      toast.error("Preencha todos documentos");
+    }
+  };
+
   return (
     <>
-      <form className="w-[320px] xs:w-[400px] lg:w-7/12 flex flex-col gap-2 lg:gap-4">
+      <form onSubmit={nextStep} className="w-[320px] xs:w-[400px] lg:w-7/12 flex flex-col gap-2 lg:gap-4">
         <span className="text-sm text-center">
           <strong>Obs: Anexe o máximo de fotos possível</strong>
         </span>
@@ -107,11 +131,10 @@ export default function FormFour({
             Voltar
           </button>
           <button
-            type="button"
+            type="submit"
             className="w-max h-[52px] rounded-3xl bg-green-water text-white px-8 py-3 font-semibold mt-6"
-            onClick={() => setStep((prev) => (prev += 1))}
           >
-            Enviar
+            Proximo
           </button>
         </div>
       </form>

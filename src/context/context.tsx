@@ -151,7 +151,22 @@ export const ContextProvider = ({
 
   const { register } = useHomologation();
 
-  const handleHomologation = async () => {
+  const handleHomologation = async (docs: any) => {
+    const contasReceberCredito = [];
+
+    if (conta01.numero_conta_contrato || conta01.media_consumo_conta) {
+      contasReceberCredito.push(conta01);
+    }
+    if (conta02.numero_conta_contrato || conta02.media_consumo_conta) {
+      contasReceberCredito.push(conta02);
+    }
+    if (conta03.numero_conta_contrato || conta03.media_consumo_conta) {
+      contasReceberCredito.push(conta03);
+    }
+    if (conta04.numero_conta_contrato || conta04.media_consumo_conta) {
+      contasReceberCredito.push(conta04);
+    }
+
     const body = {
       ...getValuesOne(),
       ...getValuesTwo(),
@@ -164,9 +179,11 @@ export const ContextProvider = ({
       tensao_de_fornecimento: tensao,
       ampliacao: magnification,
       outras_conta_recebera_credito: receiveCredit,
+      contas_receber_credito: contasReceberCredito,
     };
-
+    console.log(body);
     await register(body);
+    console.log(docs);
   };
 
   const {
