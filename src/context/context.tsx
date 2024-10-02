@@ -149,7 +149,7 @@ export const ContextProvider = ({
     media_consumo_conta: "",
   });
 
-  const { register } = useHomologation();
+  const { register, upload } = useHomologation();
 
   const handleHomologation = async (docs: any) => {
     const contasReceberCredito = [];
@@ -181,9 +181,9 @@ export const ContextProvider = ({
       outras_conta_recebera_credito: receiveCredit,
       contas_receber_credito: contasReceberCredito,
     };
-    console.log(body);
-    await register(body);
-    console.log(docs);
+    const response = await register(body);
+    const result = await upload(docs, response?.id);
+    console.log("RESULT", result);
   };
 
   const {

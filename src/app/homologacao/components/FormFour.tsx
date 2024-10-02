@@ -39,13 +39,12 @@ export default function FormFour({
       accountFile.length > 0 &&
       document.length > 0
     ) {
-      handleHomologation([
+      await handleHomologation([
         ...document,
         ...accountFile,
         ...equipments,
         ...equipmentsMain,
       ]);
-      setStep((prev) => (prev += 1));
     } else {
       toast.error("Preencha todos documentos");
     }
