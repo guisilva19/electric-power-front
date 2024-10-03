@@ -102,7 +102,7 @@ interface IContext {
     }>
   >;
 
-  handleHomologation: (data: any) => void;
+  handleHomologation: (data: any) => any;
 }
 
 export const Context = React.createContext<IContext>({} as IContext);
@@ -151,39 +151,43 @@ export const ContextProvider = ({
 
   const { register, upload } = useHomologation();
 
-  const handleHomologation = async (docs: any) => {
-    const contasReceberCredito = [];
+  const handleHomologation = async (docs: any): Promise<any> => {
+    try {
+      const contasReceberCredito = [];
 
-    if (conta01.numero_conta_contrato || conta01.media_consumo_conta) {
-      contasReceberCredito.push(conta01);
-    }
-    if (conta02.numero_conta_contrato || conta02.media_consumo_conta) {
-      contasReceberCredito.push(conta02);
-    }
-    if (conta03.numero_conta_contrato || conta03.media_consumo_conta) {
-      contasReceberCredito.push(conta03);
-    }
-    if (conta04.numero_conta_contrato || conta04.media_consumo_conta) {
-      contasReceberCredito.push(conta04);
-    }
+      if (conta01.numero_conta_contrato || conta01.media_consumo_conta) {
+        contasReceberCredito.push(conta01);
+      }
+      if (conta02.numero_conta_contrato || conta02.media_consumo_conta) {
+        contasReceberCredito.push(conta02);
+      }
+      if (conta03.numero_conta_contrato || conta03.media_consumo_conta) {
+        contasReceberCredito.push(conta03);
+      }
+      if (conta04.numero_conta_contrato || conta04.media_consumo_conta) {
+        contasReceberCredito.push(conta04);
+      }
 
-    const body = {
-      ...getValuesOne(),
-      ...getValuesTwo(),
-      ...getValuesTwoMag(),
-      ...getValuesThree(),
-      transformador: transformer,
-      disjuntor_do_padrao: disjuntor,
-      cabo_do_padrao: cabo,
-      tipo_de_ligacao: ligacao,
-      tensao_de_fornecimento: tensao,
-      ampliacao: magnification,
-      outras_conta_recebera_credito: receiveCredit,
-      contas_receber_credito: contasReceberCredito,
-    };
-    const response = await register(body);
-    const result = await upload(docs, response?.id);
-    console.log("RESULT", result);
+      const body = {
+        ...getValuesOne(),
+        ...getValuesTwo(),
+        ...getValuesTwoMag(),
+        ...getValuesThree(),
+        transformador: transformer,
+        disjuntor_do_padrao: disjuntor,
+        cabo_do_padrao: cabo,
+        tipo_de_ligacao: ligacao,
+        tensao_de_fornecimento: tensao,
+        ampliacao: magnification,
+        outras_conta_recebera_credito: receiveCredit,
+        contas_receber_credito: contasReceberCredito,
+      };
+      const response = await register(body);
+      await upload(docs, response?.id);
+      return { ...response, error: false };
+    } catch (err) {
+      return { error: false };
+    }
   };
 
   const {

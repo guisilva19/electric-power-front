@@ -2,12 +2,13 @@
 import Image from "next/image";
 import background from "@/assets/background-homologacao.png";
 import SubFooter from "@/components/SubFooter/SubFooter";
-import { useState } from "react";
 import Steps from "./components/Steps";
 import FormOne from "./components/FormOne";
 import FormTwo from "./components/FormTwo";
 import FormThree from "./components/FormThree";
 import FormFour from "./components/FormFour";
+
+import { useState } from "react";
 
 export default function Homologacao() {
   const [step, setStep] = useState(1);
