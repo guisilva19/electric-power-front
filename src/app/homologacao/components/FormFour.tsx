@@ -80,7 +80,7 @@ export default function FormFour({
       {!success ? (
         <>
           {loading ? (
-            <div className="w-6 h-6 rounded-full border-2 border-green-water border-t-transparent animate-spin" />
+            <div className="w-14 h-14 rounded-full border-2 border-green-water border-t-transparent animate-spin" />
           ) : (
             <form
               onSubmit={finish}
