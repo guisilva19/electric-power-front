@@ -4,8 +4,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: `${process.env.API_URL}/:path*`,
-        // destination: `http://localhost:8080/:path*`,
+        destination: `https://electric-backend-production.up.railway.app/:path*`,
       },
     ];
   },
