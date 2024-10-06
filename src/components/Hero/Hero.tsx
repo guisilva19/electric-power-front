@@ -6,8 +6,13 @@ import HomeWhite from "@/assets/home-white.svg";
 import Building from "@/assets/building.svg";
 import BuildingWhite from "@/assets/building-white.svg";
 import { Input, Select, SelectItem } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { citys } from "./data";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { formSchemaBudget } from "@/lib/schema";
+import { toast } from "sonner";
+import useBudget from "@/hook/useBudget";
 
 export default function Hero() {
   const [locale, setLocale] = useState<string>("");
@@ -24,9 +29,6 @@ export default function Hero() {
 
   const formatCurrency = (text: string) => {
     let cleaned = text.replace(/\D/g, "");
-
-    // Adiciona zeros à esquerda se houver menos de 3 dígitos
-    // Isso garante que os centavos sejam tratados corretamente
     while (cleaned.length < 3) {
       cleaned = "0" + cleaned;
     }
@@ -48,6 +50,32 @@ export default function Hero() {
   const handleValueChange = (text: string) => {
     const numericText = text.replace(/\s?R\$\s?/, "");
     setValue(formatCurrency(numericText));
+  };
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(formSchemaBudget),
+  });
+
+  const { budget } = useBudget();
+
+  const handle = async (data: any) => {
+    if (locale.length === 0) {
+      toast.error("Insira para onde quer economizar");
+    } else if (value === "R$ 0,00" || value === "0,00") {
+      toast.error("Insira o valor da sua conta de luz por mês");
+    } else {
+      const body = { ...data, local: locale, valor_da_conta_de_luz: value };
+
+      await budget(body);
+      setTimeout(() => {
+        reset();
+      }, 500);
+    }
   };
 
   return (
@@ -107,7 +135,10 @@ export default function Hero() {
             <h3 className="text-green-water font-bold text-xl">
               Solicitar orçamento
             </h3>
-            <form className="w-11/12 lg:w-[85%] flex flex-col gap-5">
+            <form
+              onSubmit={handleSubmit(handle)}
+              className="w-11/12 lg:w-[85%] flex flex-col gap-5"
+            >
               <fieldset className="flex flex-col gap-2">
                 <label className="flex gap-1 font-bold text-sm lg:text-base">
                   Quero economizar para:
@@ -159,6 +190,7 @@ export default function Hero() {
                     label=""
                     placeholder=""
                     variant="underlined"
+                    {...register("cidade")}
                   >
                     {(city) => (
                       <SelectItem key={city.value}>{city.name}</SelectItem>
@@ -171,7 +203,12 @@ export default function Hero() {
                     Endereço:
                     <mark className="text-green-water bg-transparent">*</mark>
                   </label>
-                  <Input variant="underlined" size="sm" className="h-4" />
+                  <Input
+                    variant="underlined"
+                    size="sm"
+                    className="h-4"
+                    {...register("endereco")}
+                  />
                 </fieldset>
               </div>
 
@@ -180,7 +217,13 @@ export default function Hero() {
                   Nome completo:
                   <mark className="text-green-water bg-transparent">*</mark>
                 </label>
-                <Input variant="underlined" size="sm" className="h-4" />
+
+                <Input
+                  variant="underlined"
+                  size="sm"
+                  className="h-4"
+                  {...register("nome")}
+                />
               </fieldset>
 
               <fieldset className="w-full h-10 flex flex-col justify-between mt-3">
@@ -188,7 +231,12 @@ export default function Hero() {
                   Seu melhor e-mail:
                   <mark className="text-green-water bg-transparent">*</mark>
                 </label>
-                <Input variant="underlined" size="sm" className="h-4" />
+                <Input
+                  variant="underlined"
+                  size="sm"
+                  className="h-4"
+                  {...register("email")}
+                />
               </fieldset>
 
               <fieldset className="w-full h-10 flex flex-col justify-between mt-3">
@@ -196,7 +244,12 @@ export default function Hero() {
                   Seu Whatsapp:
                   <mark className="text-green-water bg-transparent">*</mark>
                 </label>
-                <Input variant="underlined" size="sm" className="h-4" />
+                <Input
+                  variant="underlined"
+                  size="sm"
+                  className="h-4"
+                  {...register("telefone")}
+                />
               </fieldset>
 
               <fieldset className="flex flex-col gap-2 mt-3">
@@ -218,7 +271,23 @@ export default function Hero() {
                 </span>
               </fieldset>
 
-              <button className="w-full h-12 rounded-3xl bg-yellow text-white font-bold">
+              <button
+                type="submit"
+                onClick={() => {
+                  if (errors.cidade) {
+                    toast.error(errors.cidade.message);
+                  } else if (errors.endereco) {
+                    toast.error(errors.endereco.message);
+                  } else if (errors.nome) {
+                    toast.error(errors.nome.message);
+                  } else if (errors.email) {
+                    toast.error(errors.email.message);
+                  } else if (errors.telefone) {
+                    toast.error(errors.telefone.message);
+                  }
+                }}
+                className="w-full h-12 rounded-3xl bg-yellow text-white font-bold"
+              >
                 Solicitar orçamento
               </button>
             </form>

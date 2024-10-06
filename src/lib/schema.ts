@@ -54,3 +54,14 @@ export const formSchemaThree = yup.object().shape({
     .string()
     .required("Insira a distância média entre inversor e distribuição"),
 });
+
+export const formSchemaBudget = yup.object().shape({
+  nome: yup.string().required("Insira seu nome completo"),
+  telefone: yup.string().required("Insira seu telefone"),
+  cidade: yup.string().required("Insira sua cidade"),
+  endereco: yup.string().required("Insira seu endereço"),
+  email: yup
+    .string()
+    .required("Insira seu e-mail")
+    .email("Insira um e-mail válido"),
+});

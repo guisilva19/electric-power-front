@@ -19,7 +19,7 @@ import {
   FormSchemaTwo,
   FormSchemaTwoMag,
 } from "@/interface/interface";
-import useHomologation from "@/hook/useHomologation/useHomologation";
+import useHomologation from "@/hook/useHomologation";
 
 interface IContext {
   errorsOne: FieldErrors<FormSchemaOne>;
