@@ -1,24 +1,41 @@
-import { toast } from "sonner";
+import { toast } from "react-hot-toast";
 
 export default function useBudget() {
   const budget = async (body: any) => {
-    try {
-      const response = await fetch("/api/orcamento", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    const fetchBudget = fetch("/api/orcamento", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    toast.promise(
+      fetchBudget,
+      {
+        loading: "Enviando sua solicitação de orçamento...",
+        success:
+          "Recebemos sua solicitação de orçamento e entraremos em contato em breve. Obrigado pelo interesse!",
+        error:
+          "No momento não foi possível solicitar orçamento, entre em contato por WhatsApp.",
+      },
+      {
+        success: {
+          duration: 5000, // duração opcional do toast de sucesso
         },
-        body: JSON.stringify(body),
-      });
-      if (response.ok) {
-        toast.success(
-          "Recebemos sua solicitação de orçamento e entraremos em contato o mais breve possível. Agradecemos pelo interesse!"
-        );
+        error: {
+          duration: 7000, // duração opcional do toast de erro
+        },
+      }
+    );
+
+    try {
+      const response = await fetchBudget;
+      if (!response.ok) {
+        throw new Error("Falha na solicitação do orçamento.");
       }
     } catch (err) {
-      toast.error(
-        "No momento não foi possivel solicitar orçamento, entre em contato por WhatsApp"
-      );
+      console.error("Erro ao enviar orçamento:", err);
     }
   };
 

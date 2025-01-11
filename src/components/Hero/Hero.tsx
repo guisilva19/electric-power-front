@@ -6,7 +6,7 @@ import HomeWhite from "@/assets/home-white.svg";
 import Building from "@/assets/building.svg";
 import BuildingWhite from "@/assets/building-white.svg";
 import { Input, Select, SelectItem } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { citys } from "./data";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -190,6 +190,7 @@ export default function Hero() {
                     label=""
                     placeholder=""
                     variant="underlined"
+                    id="cidade"
                     {...register("cidade")}
                   >
                     {(city) => (
@@ -204,6 +205,7 @@ export default function Hero() {
                     <mark className="text-green-water bg-transparent">*</mark>
                   </label>
                   <Input
+                  autoComplete=""
                     variant="underlined"
                     size="sm"
                     className="h-4"

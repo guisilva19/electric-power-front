@@ -1,9 +1,9 @@
 "use client";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FileUpload } from "@/components/File/File";
-import { toast } from "sonner";
 import { useGlobalContext } from "@/context/context";
 import { CiCircleCheck } from "react-icons/ci";
+import toast from "react-hot-toast";
 
 export default function FormFour({
   setStep,
@@ -58,7 +58,7 @@ export default function FormFour({
           if (!result.error) {
             setResult(result);
             setSuccess(true);
-            window.open(result?.link_payment, "_blank");
+            window.open(result?.link_pagamento, "_blank");
           }
 
           setLoading(false);
@@ -71,7 +71,7 @@ export default function FormFour({
         }
       );
     } else {
-      toast.error("Preencha todos os documentos");
+      toast.error("Anexe todos os documentos");
     }
   };
 
@@ -173,22 +173,30 @@ export default function FormFour({
           )}
         </>
       ) : (
-        <div className="w-[320px] xs:w-[400px] lg:w-7/12 flex flex-col items-center h-96">
-          <CiCircleCheck color="#01ff16" size={60} />
-          <h5 className="font-semibold text-base lg:text-xl text-center text-nowrap">
-            Informações cadastradas com sucesso!
-          </h5>
-          <span className="text-center text-sm lg:text-xl">
-            Para finalizar o processo {"\n"} faça o pagamento{" "}
-            <a
-              href={result?.link_payment}
-              target="_blank"
-              className="font-semibold underline"
-            >
-              Clicando aqui!
-            </a>
-          </span>
+        <div className="w-full max-w-lg mx-auto flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-2xl">
+        <div className="bg-gradient-to-r from-green-400 to-teal-500 p-5 rounded-full shadow-lg">
+          <CiCircleCheck color="#ffffff" size={50} />
         </div>
+        
+        <h5 className="font-semibold text-xl lg:text-2xl text-gray-900 mt-6 text-center">
+          Informações cadastradas com sucesso!
+        </h5>
+        
+        <p className="text-gray-700 text-sm lg:text-base mt-3 text-center max-w-xs">
+          Para finalizar o processo, basta realizar o pagamento. Acesse o link abaixo e finalize sua transação.
+        </p>
+        
+        <div className="mt-4">
+          <a
+            href={result?.link_pagamento}
+            target="_blank"
+            className="inline-block bg-green-water hover:bg-green-water/90 text-white font-semibold py-2 px-6 rounded-full shadow-md transition-all duration-200 transform hover:scale-105"
+          >
+            Clicando aqui!
+          </a>
+        </div>
+      </div>
+      
       )}
     </>
   );
